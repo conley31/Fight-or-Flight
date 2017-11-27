@@ -96,7 +96,6 @@ var server = app.listen(PORT, function() {
 
 // Gracefully handle exits by closing the database pool
 var exitHandler = function() {
-  db.close(process.exit); // Close the database pool, then this process
 
   setTimeout(function() {
     console.error('Could not close connections in time, forcefully shutting down');
