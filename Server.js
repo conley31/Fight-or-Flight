@@ -32,7 +32,6 @@ if (app.get('env') === 'production') {
 }
 
 app.get('/', function(req, res) {
-  req.session.dailyData = null; // Reset daily data each time the page loads
   res.render('index.ejs', {
     production: app.get('env') === 'production',
     title: 'Fight or Flight'
