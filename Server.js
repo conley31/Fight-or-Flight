@@ -12,6 +12,8 @@ var express = require('express'),
   favicon = require('serve-favicon');
 
 var app = express();
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
 
 if (app.get('env') === 'production') {
   app.use(morgan('combined'));
