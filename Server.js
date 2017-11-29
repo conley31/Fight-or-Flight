@@ -8,8 +8,7 @@ var express = require('express'),
   nconf = require('nconf'),
   morgan = require('morgan'),
   csv = require('fast-csv'),
-  session = require('express-session'),
-  favicon = require('serve-favicon');
+  session = require('express-session')
 
 var app = express();
 var http = require('http').Server(app);
@@ -40,6 +39,13 @@ app.get('/', function(req, res) {
   });
 });
 
+io.on('connection', function (socket) {
+  socket.emit('news', { hello: 'world' });
+  socket.on('my other event', function (data) {
+    console.log(data);
+  });
+});
+
 // 404 Page (Always keep this as the last route)
 app.get('*', function(req, res) {
   if (req.xhr) {
@@ -52,9 +58,8 @@ app.get('*', function(req, res) {
     html: function() {
       res.status(404).render('error.ejs', {
         error: 'Page Not Found: ' + req.hostname + req.originalUrl,
-        googleMapsKey: nconf.get('google_maps').key,
         production: app.get('env') === 'production',
-        title: 'Page Not Found - Pond Sizing Tool'
+        title: 'Page Not Found - Fight or Flight'
       });
     },
     json: function() {
@@ -91,7 +96,7 @@ app.use(function(err, req, res, next) {
   }
 });
 
-var server = app.listen(PORT, function() {
+var server = http.listen(PORT, function() {
   console.log('Running Server on Port', PORT, 'in', app.get('env') === 'production' ? 'Production mode' : 'Development Mode');
 });
 
