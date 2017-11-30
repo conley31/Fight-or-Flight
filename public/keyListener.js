@@ -2,8 +2,8 @@ function Key(button){
 	this.button = button;
 }
 
-Key.prototype {
-	pressed: false;
+Key.prototype = {
+	pressed: false
 };
 
 function KeySetup(){
@@ -27,15 +27,16 @@ function getKey(button){
 }
 
 window.addEventListener('keydown', function(event){
-	var listenKey = getKey(e.KeyCode);
+	var listenKey = getKey(event.which);
 	if(listenKey){
+		draw();
 		listenKey.pressed = true;
 		event.preventDefault();
 	}
 });
 
 window.addEventListener('keyup', function(event){
-	var listenKey = getKey(e.KeyCode);
+	var listenKey = getKey(event.which);
 	if(listenKey){
 		listenKey.pressed = false;
 		event.preventDefault();
