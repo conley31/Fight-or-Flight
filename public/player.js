@@ -9,6 +9,7 @@ function Player(username) {
 	this.playerID = numOfPlayers;
 	numOfPlayers++;
 	this.username = username;
+	this.keys = new KeySet();
 }
 /*
 Player.prototype.positionX = function(dx) {
@@ -35,9 +36,11 @@ Player.prototype = {
 		ctx.closePath();
 	}
 	positionX: function(dx) {
-		return this.x + dx;
+		this.x += dx;
+		return this.x;
 	}
 	positionY: function(dy) {
-		return this.y + dy;
+		this.y += dy;
+		return this.y;
 	}
 };
