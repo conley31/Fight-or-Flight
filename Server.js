@@ -40,9 +40,12 @@ app.get('/', function(req, res) {
 });
 
 io.on('connection', function (socket) {
-  socket.emit('news', { hello: 'world' });
-  socket.on('my other event', function (data) {
-    console.log(data);
+  socket.on('join', function(data) {
+    socket.name = data;
+    socket.broadcast.emit('newplayer', data);
+  });
+  socket.on('keys', function (data) {
+    socket.broadcast.emit('keys', socket.name, data);
   });
 });
 

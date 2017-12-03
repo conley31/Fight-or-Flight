@@ -1,15 +1,17 @@
 var numOfPlayers = 0;
 
-function Player(username) {
+function Player(username){
 	this.x = w / 2;
-	this.y = h;
+	this.y = h / 2;
+	console.log(this.x);
+	console.log(this.y);
 	this.width = 5;
 	this.height = 5;
 	this.score = 0;
 	this.playerID = numOfPlayers;
 	numOfPlayers++;
 	this.username = username;
-	this.keys = new KeySet();
+	this.keys = new KeySetup();
 }
 /*
 Player.prototype.positionX = function(dx) {
@@ -22,25 +24,35 @@ Player.prototype.positionY = function(dy) {
 Player.prototype = {
 	x: 0,
 	y: 0,
-	width: 5,
-	height: 5,
+	width: 50,
+	height: 50,
 	draw: function() {
-		var posX = this.positionX();
-		var posY = this.positionY();
+		console.log(draw);
+		var posX = this.x;
+		var posY = this.y;
 		ctx.beginPath();
 		ctx.moveTo(posX, posY);
-		ctx.lineTo(posX + width, posY);
-		ctx.lineTo(posX + (width / 2), posY + height);
-		ctx.moveTo(posX + width, posY);
-		ctx.lineTo(posX - (width / 2), posY + height);
+		ctx.lineTo(posX + this.width, posY);
+		ctx.lineTo(posX + (this.width / 2), posY + this.height);
+		ctx.moveTo(posX + this.width, posY);
+		ctx.lineTo(posX - (this.width / 2), posY + this.height);
+		ctx.fillStyle = "#0095DD";
+		ctx.fill()
 		ctx.closePath();
-	}
-	positionX: function(dx) {
-		this.x += dx;
-		return this.x;
-	}
-	positionY: function(dy) {
-		this.y += dy;
-		return this.y;
+		ctx.font = '12px Arial';
+        ctx.fillStyle = '#fff';
+        ctx.textAlign = 'center';
+        ctx.fillText(this.username, this.x, h-10);
+	},
+	positionIncreaseX: function() {
+		this.x += 4;
+		console.log("increase");
+		//return this.x;
+	},
+	positionDecreaseX: function() {
+		this.x -= 4;
+		console.log("deacrease");
+
+		//return this.y;
 	}
 };

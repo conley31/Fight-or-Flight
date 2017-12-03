@@ -29,7 +29,6 @@ function getKey(button){
 window.addEventListener('keydown', function(event){
 	var listenKey = getKey(event.which);
 	if(listenKey){
-		draw();
 		listenKey.pressed = true;
 		event.preventDefault();
 	}
