@@ -45,6 +45,7 @@ io.on('connection', function (socket) {
     socket.broadcast.emit('newplayer', data);
   });
   socket.on('keys', function (data) {
+    console.log("key pressed for player");
     socket.broadcast.emit('keys', socket.name, data);
   });
 });

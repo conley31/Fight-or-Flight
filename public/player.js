@@ -1,4 +1,5 @@
 var numOfPlayers = 0;
+var colors = ["#0095DD", "#ffffff"];
 
 function Player(username){
 	this.x = w / 2;
@@ -36,7 +37,7 @@ Player.prototype = {
 		ctx.lineTo(posX + (this.width / 2), posY + this.height);
 		ctx.moveTo(posX + this.width, posY);
 		ctx.lineTo(posX - (this.width / 2), posY + this.height);
-		ctx.fillStyle = "#0095DD";
+		ctx.fillStyle = colors[this.playerID];
 		ctx.fill()
 		ctx.closePath();
 		ctx.font = '12px Arial';

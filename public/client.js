@@ -32,4 +32,18 @@ window.onload = function() {
 			socket.emit('keys', '');
 		}
 	}
+
+	var holdNames = {};
+
+	function NewPlayer(name){
+		console.log("newplayer")
+		var player = new Player(name);
+		players.push(player);
+		holdNames[name] = player;
+		return player;
+	}
+
+	socket.on('newplayer', function(name){
+		var player = NewPlayer(name);
+	});
 }

@@ -3,12 +3,26 @@
 	<body>
 		<h1>Hello World</h1>
 		<canvas id="game-canvas" width="640" height="640"></canvas>
-		<div id="controls">
-            <button id="btn-left">LEFT</button>
-            <button id="btn-shoot">SHOOT</button>
-            <button id="btn-right">RIGHT</button>
-        </div>
 		<script src="/socket.io.js"></script>
 		<% include partials/scripts %>
+		<script>
+			/*window.onload = function(){
+				var socket = io.connect();
+				socket.on('connect', function(){
+					var holdNames = {};
+
+					function NewPlayer(name){
+						var player = new Player(name);
+						players.push(player);
+						holdNames[name] = player;
+						return player;
+					}
+
+					socket.on('newplayer', function(name){
+						var player = NewPlayer(name);
+					});
+				});
+			}*/
+		</script>
 	</body>
 </html>
