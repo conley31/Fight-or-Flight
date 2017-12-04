@@ -34,7 +34,7 @@ function draw() {
 function start() {
 	update();
 	draw();
-	//requestAnimationFrame(start);
+	requestAnimationFrame(start);
 }
 
 start();

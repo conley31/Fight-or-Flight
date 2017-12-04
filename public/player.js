@@ -6,8 +6,8 @@ function Player(username){
 	this.y = h / 2;
 	console.log(this.x);
 	console.log(this.y);
-	this.width = 5;
-	this.height = 5;
+	this.width = 50;
+	this.height = 50;
 	this.score = 0;
 	this.playerID = numOfPlayers;
 	numOfPlayers++;
