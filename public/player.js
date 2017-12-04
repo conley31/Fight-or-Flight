@@ -34,9 +34,9 @@ Player.prototype = {
 		ctx.beginPath();
 		ctx.moveTo(posX, posY);
 		ctx.lineTo(posX + this.width, posY);
-		ctx.lineTo(posX + (this.width / 2), posY + this.height);
+		ctx.lineTo(posX + (this.width / 2), posY - this.height);
 		ctx.moveTo(posX + this.width, posY);
-		ctx.lineTo(posX - (this.width / 2), posY + this.height);
+		ctx.lineTo(posX - (this.width / 2), posY - this.height);
 		ctx.fillStyle = colors[this.playerID];
 		ctx.fill()
 		ctx.closePath();
