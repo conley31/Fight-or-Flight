@@ -6,27 +6,20 @@ function Player(username){
 	this.y = h;
 	console.log(this.x);
 	console.log(this.y);
-	this.width = 50;
-	this.height = 50;
+	this.width = 40;
+	this.height = 40;
 	this.score = 0;
 	this.playerID = numOfPlayers;
 	numOfPlayers++;
 	this.username = username;
 	this.keys = new KeySetup();
 }
-/*
-Player.prototype.positionX = function(dx) {
-	return this.x + dx;
-};
-Player.prototype.positionY = function(dy) {
-	return this.y + dy;
-};
-*/
+
 Player.prototype = {
 	x: 0,
 	y: 0,
-	width: 50,
-	height: 50,
+	width: 40,
+	height: 40,
 	draw: function() {
 		console.log(draw);
 		var posX = this.x;
@@ -38,7 +31,7 @@ Player.prototype = {
 		ctx.moveTo(posX + this.width, posY);
 		ctx.lineTo(posX - (this.width / 2), posY - this.height);
 		ctx.fillStyle = colors[this.playerID];
-		ctx.fill()
+		ctx.fill();
 		ctx.closePath();
 		ctx.font = '12px Arial';
         ctx.fillStyle = '#000';
@@ -46,14 +39,23 @@ Player.prototype = {
         ctx.fillText(this.username, this.x, h-10);
 	},
 	positionIncreaseX: function() {
-		this.x += 4;
+		this.x += 6;
+		if ((this.x + this.width) > w) {
+			this.x = (w - this.width);
+		}
 		console.log("increase");
 		//return this.x;
 	},
 	positionDecreaseX: function() {
-		this.x -= 4;
+		this.x -= 6;
+		if (this.x < 0) {
+			this.x = 0;
+		}
 		console.log("deacrease");
 
 		//return this.y;
+	},
+	shoot: function() {
+		
 	}
 };
