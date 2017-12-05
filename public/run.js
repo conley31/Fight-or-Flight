@@ -5,13 +5,29 @@ var h = canvas.height;
 
 var gameState = "RUNNING";
 
+//var numOfEnemies = 0;
 var numOfProjectiles = 0;
 var players = [];
 var projectiles = [];
+var enemies = [];
+var player = new Player("temp");
+players.push(player);
 
-var player;
-//players.push(player);
-
+simple();
+function simple() {
+	var e1 = new basicEnemy(0, -60);
+	enemies.push(e1);
+	var e2 = new basicEnemy(60, -60);
+	enemies.push(e2);
+	var e3 = new basicEnemy(120, -60);
+	enemies.push(e3);
+	var e4 = new basicEnemy(0, 0);
+	enemies.push(e4);
+	var e5 = new basicEnemy(60, 0);
+	enemies.push(e5);
+	var e6 =new basicEnemy(120, 0);
+	enemies.push(e6);
+}
 function update() {
 	if(players != null && player == null){
 		console.log("SET");
@@ -38,6 +54,12 @@ function update() {
 			}
 		}
 	}
+	else if (gameState === "GAME_OVER") {
+		ctx.font = "30px Arial";
+		ctx.fillStyle = "red";
+		ctx.textAlign = "center"
+		ctx.fillText("GAME OVER", canvas.width / 2, canvas.height / 2);
+	}
 }
 function draw() {
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -47,6 +69,9 @@ function draw() {
 	}
 	for (i = 0; i < numOfProjectiles; i++) {
 		projectiles[i].draw();
+	}
+	for (i = 0; i < numOfEnemies; i++) {
+		enemies[i].draw();
 	}
 }
 
