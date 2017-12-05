@@ -28,7 +28,6 @@ Player.prototype = {
 	width: 50,
 	height: 50,
 	draw: function() {
-		console.log(draw);
 		var posX = this.x;
 		var posY = this.y;
 		ctx.beginPath();
@@ -47,12 +46,10 @@ Player.prototype = {
 	},
 	positionIncreaseX: function() {
 		this.x += 4;
-		console.log("increase");
 		//return this.x;
 	},
 	positionDecreaseX: function() {
 		this.x -= 4;
-		console.log("deacrease");
 
 		//return this.y;
 	}
