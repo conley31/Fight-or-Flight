@@ -15,17 +15,17 @@ players.push(player);
 
 simple();
 function simple() {
-	var e1 = new basicEnemy(0, -40);
+	var e1 = new basicEnemy(0, -60);
 	enemies.push(e1);
-	var e2 = new basicEnemy(40, -40);
+	var e2 = new basicEnemy(60, -60);
 	enemies.push(e2);
-	var e3 = new basicEnemy(80, -40);
+	var e3 = new basicEnemy(120, -60);
 	enemies.push(e3);
 	var e4 = new basicEnemy(0, 0);
 	enemies.push(e4);
-	var e5 = new basicEnemy(40, 0);
+	var e5 = new basicEnemy(60, 0);
 	enemies.push(e5);
-	var e6 =new basicEnemy(80, 0);
+	var e6 =new basicEnemy(120, 0);
 	enemies.push(e6);
 }
 function update() {
@@ -46,6 +46,12 @@ function update() {
 				players[i].shoot();
 			}
 		}
+	}
+	else if (gameState === "GAME_OVER") {
+		ctx.font = "30px Arial";
+		ctx.fillStyle = "red";
+		ctx.textAlign = "center"
+		ctx.fillText("GAME OVER", canvas.width / 2, canvas.height / 2);
 	}
 }
 function draw() {
