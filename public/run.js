@@ -5,7 +5,9 @@ var h = canvas.height;
 
 var gameState = "RUNNING";
 
+var numOfProjectiles = 0;
 var players = [];
+var projectiles = [];
 var player = new Player("temp");
 players.push(player);
 
@@ -23,6 +25,9 @@ function update() {
 			if (players[i].keys.right.pressed) {
 				players[i].positionIncreaseX();
 			}
+			if (players[i].keys.space.pressed) {
+				players[i].shoot();
+			}
 		}
 	}
 }
@@ -31,6 +36,9 @@ function draw() {
 	var i;
 	for(i=0;i < numOfPlayers; i++){
 		players[i].draw();
+	}
+	for (i = 0; i < numOfProjectiles; i++) {
+		projectiles[i].draw();
 	}
 }
 
