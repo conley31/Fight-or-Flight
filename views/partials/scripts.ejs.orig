@@ -1,6 +1,10 @@
 <script src="/client.js" type="text/javascript"></script>
-<<<<<<< HEAD
 <script src="/keyListener.js" type="text/javascript"></script>
+<script src="/player.js" type="text/javascript"></script>
+<<<<<<< HEAD
 =======
+<script src="/client.js" type="text/javascript"></script>
+<script src="/enemy.js" type="text/javascript"></script>
+<script src="/projectile.js" type="text/javascript"></script>
+>>>>>>> 88f2f61ca9cc1db3627f9f269882b57a52193ad5
 <script src="/run.js" type="text/javascript"></script>
->>>>>>> b16c028f7de6e1ca0f8da21065edf35ec957105e

@@ -3,16 +3,23 @@ var ctx = canvas.getContext('2d');
 var w = canvas.width;
 var h = canvas.height;
 
-var gameState = "NOT_RUNNING";
+var gameState = "RUNNING";
 
 //var numOfEnemies = 0;
 var numOfProjectiles = 0;
 var players = [];
 var projectiles = [];
-var enemies = [];
-var player;
-var s = 0;
+<<<<<<< HEAD
 
+var player;
+//players.push(player);
+=======
+var enemies = [];
+var player = new Player("temp");
+players.push(player);
+>>>>>>> 88f2f61ca9cc1db3627f9f269882b57a52193ad5
+
+simple();
 function simple() {
 	var e1 = new basicEnemy(0, -60);
 	enemies.push(e1);
@@ -29,20 +36,19 @@ function simple() {
 }
 function update() {
 	if(players != null && player == null){
+		console.log("SET");
 		player = players[numOfPlayers - 1];
 	}
 	if(player != null){
-		if (gameState === "NOT_RUNNING") {
-			for(i=0; i < numOfPlayers; i++){
-				if(players[i].keys.left.pressed || players[i].keys.right.pressed){
-					gameState = "RUNNING";
-				}
-			}
+		console.log(player);
+		if ((player.keys.left.pressed || player.keys.right.pressed) && gameState === "NOT_RUNNING") {
+			gameState = "RUNNING";
 		}
 		else if (gameState === "RUNNING") { // maybe should be gameState.valueOf()
 			for (i = 0; i < numOfPlayers; i++) {
 				if (players[i].keys.left.pressed) {
 					players[i].positionDecreaseX();
+					console.log("decrease");
 
 				}
 				if (players[i].keys.right.pressed) {
@@ -51,11 +57,6 @@ function update() {
 				if (players[i].keys.space.pressed && players[i].shotDelay()) {
 					players[i].shoot();
 				}
-			}
-
-			if(s == 0){
-				simple();
-				s = 1;
 			}
 		}
 	}

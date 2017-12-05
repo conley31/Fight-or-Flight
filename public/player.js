@@ -44,7 +44,6 @@ Player.prototype = {
 		if ((this.x + this.width) > w) {
 			this.x = (w - this.width);
 		}
-		console.log("increase");
 		//return this.x;
 	},
 	positionDecreaseX: function() {
@@ -52,8 +51,6 @@ Player.prototype = {
 		if (this.x < 0) {
 			this.x = 0;
 		}
-		console.log("deacrease");
-
 		//return this.y;
 	},
 	shotDelay: function() {

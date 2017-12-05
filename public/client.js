@@ -56,16 +56,13 @@ window.onload = function() {
 
 	socket.on('keyMult', function(name, key){
         var play = NewPlayer(name);
-        console.log(key);
-        if (play){
-            for (var k in play.keys){
-                play.keys[k].down = false;
-            }
-            key.split(' ').forEach(function(k){
-                if (play.keys[k]){
-                    play.keys[k].down = true;
-                }
-    		});
+        if(play != player){
+        	if(key == 'left'){
+        		play.positionDecreaseX()
+        	}
+        	if(key == 'right'){
+        		play.positionIncreaseX();
+        	}
         }
     });
 }
