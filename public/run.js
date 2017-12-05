@@ -6,7 +6,7 @@ var h = canvas.height;
 var gameState = "RUNNING";
 
 var players = [];
-var player = new Player('test0');
+var player = new Player("temp");
 players.push(player);
 
 function update() {
@@ -28,7 +28,10 @@ function update() {
 }
 function draw() {
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
-	player.draw();
+	var i;
+	for(i=0;i < numOfPlayers; i++){
+		players[i].draw();
+	}
 }
 
 function start() {
@@ -39,4 +42,3 @@ function start() {
 
 start();
 
-console.log(player.keys);
