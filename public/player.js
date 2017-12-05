@@ -65,5 +65,14 @@ Player.prototype = {
 	shoot: function() {
 		var proj = new Projectile(this.x + (this.width / 2), this.y - this.height, this.playerID);
 		projectiles.push(proj);
+	},
+	collision: function() {
+		for (i = 0; i < numOfEnemies; i++) {
+			if (enemies[i] != null) {
+				if (enemies[i].x > this.x && (enemies[i].x + enemies[i].width) < (this.x + this.width) && enemies[i].y < this.y && (enemies[i].y - enemies[i].height) > (this.y - this.height)) {
+					//do something
+				}
+			}
+		}
 	}
 };
