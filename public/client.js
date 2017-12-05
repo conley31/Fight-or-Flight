@@ -44,6 +44,7 @@ window.onload = function() {
 		if (holdNames[name]){
             return holdNames[name];
         } else {
+        	console.log("player should add");
             var player = new Player(name);
             players.push(player);
             holdNames[name] = player;
@@ -51,6 +52,7 @@ window.onload = function() {
 	}
 
 	socket.on('newplayer', function(name){
+		console.log("call new player");
 		NewPlayer(name);
 	});
 
