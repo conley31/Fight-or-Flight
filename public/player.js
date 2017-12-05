@@ -56,7 +56,7 @@ Player.prototype = {
 		//return this.y;
 	},
 	shoot: function() {
-		var proj = new Projectile(this.x + (this.width / 2), this.y + this.height, this.playerID);
+		var proj = new Projectile(this.x + (this.width / 2), this.y - this.height, this.playerID);
 		projectiles.push(proj);
 	}
 };
