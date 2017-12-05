@@ -22,6 +22,7 @@ Player.prototype = {
 	y: 0,
 	width: 40,
 	height: 40,
+	running: 0,
 	draw: function() {
 		var posX = this.x;
 		var posY = this.y;

@@ -57,6 +57,11 @@ window.onload = function() {
 	});
 
 	socket.on('keyMult', function(name, key){
+		if(gameState == "NOT_RUNNING"){
+			for(i = 0; i < numOfPlayers; i++){
+				players[i].running = 1;
+			}
+		}
         var play = NewPlayer(name);
         if(play != player){
         	if(key == 'left'){
@@ -64,6 +69,9 @@ window.onload = function() {
         	}
         	if(key == 'right'){
         		play.positionIncreaseX();
+        	}
+        	if(key == 'space' && play.shotDelay()){
+        		play.shoot();
         	}
         }
     });

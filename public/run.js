@@ -33,10 +33,8 @@ function update() {
 	}
 	if(player != null){
 		if (gameState === "NOT_RUNNING") {
-			for(i=0; i < numOfPlayers; i++){
-				if(players[i].keys.left.pressed || players[i].keys.right.pressed){
-					gameState = "RUNNING";
-				}
+			if(players[player.playerID].running){
+				gameState = "RUNNING";
 			}
 		}
 		else if (gameState === "RUNNING") { // maybe should be gameState.valueOf()
@@ -58,13 +56,14 @@ function update() {
 				s = 1;
 			}
 		}
+		else if (gameState === "GAME_OVER") {
+			ctx.font = "30px Arial";
+			ctx.fillStyle = "#000";
+			ctx.textAlign = "center"
+			ctx.fillText("GAME OVER", w / 2, h / 2);
+		}
 	}
-	else if (gameState === "GAME_OVER") {
-		ctx.font = "30px Arial";
-		ctx.fillStyle = "red";
-		ctx.textAlign = "center"
-		ctx.fillText("GAME OVER", canvas.width / 2, canvas.height / 2);
-	}
+	
 }
 function draw() {
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
