@@ -1,9 +1,9 @@
 var numOfPlayers = 0;
-var colors = ["#0095DD", "#ffffff"];
+var colors = ["#0095DD", "#00000"];
 
 function Player(username){
 	this.x = w / 2;
-	this.y = h / 2;
+	this.y = h;
 	console.log(this.x);
 	console.log(this.y);
 	this.width = 50;
@@ -41,7 +41,7 @@ Player.prototype = {
 		ctx.fill()
 		ctx.closePath();
 		ctx.font = '12px Arial';
-        ctx.fillStyle = '#fff';
+        ctx.fillStyle = '#000';
         ctx.textAlign = 'center';
         ctx.fillText(this.username, this.x, h-10);
 	},
