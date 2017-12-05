@@ -1,5 +1,6 @@
 var numOfPlayers = 0;
 var colors = ["#0095DD", "#00000"];
+var d = new Date();
 
 function Player(username){
 	this.x = w / 2;
@@ -13,6 +14,7 @@ function Player(username){
 	numOfPlayers++;
 	this.username = username;
 	this.keys = new KeySetup();
+	this.prevShot = d.getTime();
 }
 
 Player.prototype = {
@@ -34,9 +36,9 @@ Player.prototype = {
 		ctx.fill();
 		ctx.closePath();
 		ctx.font = '12px Arial';
-        ctx.fillStyle = '#000';
-        ctx.textAlign = 'center';
-        ctx.fillText(this.username, this.x, h-10);
+        	ctx.fillStyle = '#000';
+        	ctx.textAlign = 'center';
+        	ctx.fillText(this.username, this.x, h-10);
 	},
 	positionIncreaseX: function() {
 		this.x += 6;
@@ -54,6 +56,14 @@ Player.prototype = {
 		console.log("deacrease");
 
 		//return this.y;
+	},
+	shotDelay: function() {
+		var curr = new Date();
+		if (this.prevShot + 400 < curr.getTime()) {
+			this.prevShot = curr.getTime();
+			return true;
+		}
+		return false;
 	},
 	shoot: function() {
 		var proj = new Projectile(this.x + (this.width / 2), this.y - this.height, this.playerID);

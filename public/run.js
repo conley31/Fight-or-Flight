@@ -25,7 +25,7 @@ function update() {
 			if (players[i].keys.right.pressed) {
 				players[i].positionIncreaseX();
 			}
-			if (players[i].keys.space.pressed) {
+			if (players[i].keys.space.pressed && players[i].shotDelay()) {
 				players[i].shoot();
 			}
 		}
