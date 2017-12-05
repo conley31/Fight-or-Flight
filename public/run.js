@@ -10,10 +10,10 @@ var player = new Player('test0');
 players.push(player);
 
 function update() {
-	if ((player.keys.left.pressed || player.keys.right.pressed) && gameState == "NOT_RUNNING") {
+	if ((player.keys.left.pressed || player.keys.right.pressed) && gameState === "NOT_RUNNING") {
 		gameState = "RUNNING";
 	}
-	else if (gameState == "RUNNING") { // maybe should be gameState.valueOf()
+	else if (gameState === "RUNNING") { // maybe should be gameState.valueOf()
 		for (i = 0; i < numOfPlayers; i++) {
 			if (players[i].keys.left.pressed) {
 				players[i].positionDecreaseX();

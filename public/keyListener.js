@@ -17,10 +17,10 @@ function KeySetup(){
 var keys = new KeySetup();
 
 function getKey(button){
-	for(var key in keys){
-		if(keys.hasOwnProperty(key)){
-			if(keys[key].button == button){
-				return keys[key];
+	for(var key in player.keys){
+		if(player.keys.hasOwnProperty(key)){
+			if(player.keys[key].button === button){
+				return player.keys[key];
 			}
 		}
 	}
