@@ -8,6 +8,9 @@ window.onload = function() {
 
 	function handleKeys(){
 		var clientKeys = [];
+		if(player == null){
+			return;
+		}
 		if(player.keys.left.pressed){
 			clientKeys.push('left');
 		}
@@ -38,23 +41,22 @@ window.onload = function() {
 	var holdNames = {};
 
 	function NewPlayer(name){
-		console.log("newplayer")
-		var player = new Player(name);
-		players.push(player);
-		holdNames[name] = player;
-		return player;
+		if (holdNames[name]){
+            return holdNames[name];
+        } else {
+            var player = new Player(name);
+            players.push(player);
+            holdNames[name] = player;
+        }
 	}
 
 	socket.on('newplayer', function(name){
-		var player = NewPlayer(name);
+		NewPlayer(name);
 	});
 
 	socket.on('keyMult', function(name, key){
-        var play;
-        if(holdNames[name]){
-        	play == holdNames[name];
-        }
-        console.log("test");
+        var play = NewPlayer(name);
+        console.log(key);
         if (play){
             for (var k in play.keys){
                 play.keys[k].down = false;
