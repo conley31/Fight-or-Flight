@@ -111,8 +111,11 @@ function draw() {
 	for (i = 0; i < numOfEnemies; i++) {
 		if (enemies[i] != null) {
 			enemies[i].collision();
-			enemies[i].draw();
-		} else {
+		}
+		if (enemies[i] != null) {
+			enemies[i].draw();	
+		}
+		if (enemies[i] == null) {
 			enemiesDefeated++;
 		}
 	}
@@ -123,9 +126,14 @@ function draw() {
 		}
 	}
 	for (i = 0; i < numOfPowerups; i++) {
+		console.log(powerups[i]);
 		if (powerups[i] != null) {
 			powerups[i].draw();
 		}
+		if (powerups[i] != null) {
+			powerups[i].collision();
+		}
+		
 	}
 	playerScore();
 }
@@ -150,6 +158,8 @@ function start() {
 			scoreState = 0;
 		}
 		// clean up
+		numOfPowerups = 0;
+		powerups = [];
 		numOfEnemies = 0;
 		speed = 1;
 		enemies = [];

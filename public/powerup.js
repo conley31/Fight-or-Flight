@@ -27,6 +27,18 @@ rapidFire.prototype = {
 		ctx.fillText("Gun Up", this.x, this.y);
 	},
 	collision: function() {
-		for (i = 0; i < numOf
+		for (i = 0; i < numOfPlayers; i++) {
+			if (!players[i].destroyed) {
+				if (this.x > players[i].x && this.x < (players[i].x + players[i].width) && this.y > (players[i].y - players[i].height)) {
+					console.log(players[i].delay);
+					if (players[i].delay > 75) {
+						players[i].delay -= 25;
+						console.log(players[i].delay);
+					}
+					delete powerups[this.powerupID];
+					return;
+				}
+			}
+		}
 	}
 }
