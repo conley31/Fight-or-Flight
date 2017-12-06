@@ -43,14 +43,14 @@ function update() {
 		}
 		else if (gameState === "RUNNING") { // maybe should be gameState.valueOf()
 			for (i = 0; i < numOfPlayers; i++) {
-				if (players[i].keys.left.pressed) {
+				if (players[i].keys.left.pressed && !players[i].destroyed) {
 					players[i].positionDecreaseX();
 
 				}
-				if (players[i].keys.right.pressed) {
+				if (players[i].keys.right.pressed && !players[i].destroyed) {
 					players[i].positionIncreaseX();
 				}
-				if (players[i].keys.space.pressed && players[i].shotDelay()) {
+				if (players[i].keys.space.pressed && players[i].shotDelay() && !players[i].destroyed) {
 					players[i].shoot();
 				}
 			}
@@ -67,8 +67,10 @@ function draw() {
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
 	var i;
 	for(i=0;i < numOfPlayers; i++){
-		players[i].collision();
-		players[i].draw();
+		if (!players[i].destroyed) {
+			players[i].collision();
+			players[i].draw();
+		}
 	}
 	for (i = 0; i < numOfEnemies; i++) {
 		if (enemies[i] != null) {

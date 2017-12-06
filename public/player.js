@@ -28,6 +28,7 @@ Player.prototype = {
 	draw: function() {
 		if (this.hp == 0) {
 			this.destroyed = true;
+			return;
 		}
 		var posX = this.x;
 		var posY = this.y;
@@ -81,8 +82,7 @@ Player.prototype = {
 		console.log("checking hit");
 		for (i = 0; i < numOfEnemies; i++) {
 			if (enemies[i] != null) {
-				if (enemies[i].x > this.x && (enemies[i].x + enemies[i].width) < (this.x + this.width) && enemies[i].y < this.y && (enemies[i].y - enemies[i].height) > (this.y - this.height)) {
-					console.log("hit");
+				if ((this.x + (this.width / 2)) > enemies[i].x && (this.x + (this.width / 2)) < (enemies[i].x + enemies[i].width) && (this.y - this.height) < (enemies[i].y + enemies[i].height)) {
 					this.hp--;
 					enemies[i].hp--;
 				}
