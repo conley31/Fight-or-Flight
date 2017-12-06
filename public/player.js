@@ -5,6 +5,8 @@ var d = new Date();
 function Player(username){
 	this.x = w / 2;
 	this.y = h;
+	this.hp = 1;
+	this.destroyed = false;
 	console.log(this.x);
 	console.log(this.y);
 	this.width = 40;
@@ -24,6 +26,9 @@ Player.prototype = {
 	height: 40,
 	running: 0,
 	draw: function() {
+		if (this.hp == 0) {
+			this.destroyed = true;
+		}
 		var posX = this.x;
 		var posY = this.y;
 		ctx.beginPath();
@@ -70,7 +75,8 @@ Player.prototype = {
 		for (i = 0; i < numOfEnemies; i++) {
 			if (enemies[i] != null) {
 				if (enemies[i].x > this.x && (enemies[i].x + enemies[i].width) < (this.x + this.width) && enemies[i].y < this.y && (enemies[i].y - enemies[i].height) > (this.y - this.height)) {
-					//do something
+					this.hp--;
+					enemies[i].hp--;
 				}
 			}
 		}
