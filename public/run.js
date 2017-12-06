@@ -39,6 +39,8 @@ function update() {
 	if(player != null){
 		if (gameState === "NOT_RUNNING") {
 			if(players[player.playerID].running){
+				ct.clearRect(0, 0, canvas.width, canvas.height);
+				levelScreen();
 				gameState = "RUNNING";
 			}
 		}
