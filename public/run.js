@@ -39,9 +39,7 @@ function update() {
 	if(player != null){
 		if (gameState === "NOT_RUNNING") {
 			if(players[player.playerID].running){
-				ct.clearRect(0, 0, canvas.width, canvas.height);
-				levelScreen();
-				gameState = "RUNNING";
+				gameState = "NEXT_LEVEL";
 			}
 		}
 		else if (gameState === "RUNNING") { // maybe should be gameState.valueOf()
@@ -115,6 +113,10 @@ function start() {
 	update();
 	if(gameState == "NOT_RUNNING"){
 		startScreen();
+	}
+	else if(gameState == "NEXT_LEVEL") {
+		levelScreen();
+		gameState = "RUNNING";
 	}
 	else if(gameState == "GAME_OVER"){
 		endScreen();
