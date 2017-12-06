@@ -15,7 +15,7 @@ function Player(username){
 	if (username == "dev0") {
 		this.delay = 25;
 	} else {
-		this.delay = 175;
+		this.delay = 150;
 	}
 	this.playerID = numOfPlayers;
 	numOfPlayers++;

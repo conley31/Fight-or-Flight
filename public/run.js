@@ -65,7 +65,7 @@ function update() {
 				projectiles = [];
 				numOfProjectiles = 0;
 				s = 0;
-				speed += 0.2;
+				speed += 0.4;
 			}
 			if (s == 2 && enemiesDefeated == numOfEnemies) {
 				enemiesDefeated = 0;
@@ -118,7 +118,7 @@ function draw() {
 			projectiles[i].draw();
 		}
 	}
-	
+	playerScore();
 }
 
 function start() {

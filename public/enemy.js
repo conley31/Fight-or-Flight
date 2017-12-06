@@ -16,7 +16,7 @@ function basicEnemy(x, y, speedMult) {
 function wideEnemy(x, y, speedMult) {
 	this.x = x;
 	this.y = y;
-	this.hp = 4;
+	this.hp = 5;
 	this.speedMult = speedMult;
 	this.width = 70;
 	this.height = 30;
@@ -31,8 +31,8 @@ function fastEnemy(x, y, speedMult) {
 	this.hp = 1;
 	this.speedMult = speedMult;
 	this.points = 150;
-	this.width = 35;
-	this.height = 55;
+	this.width = 45;
+	this.height = 65;
 	this.enemyID = numOfEnemies;
 	numOfEnemies++;
 }
@@ -96,10 +96,10 @@ boss1.prototype = {
 }
 
 fastEnemy.prototype = {
-	width: 35,
-	height: 55,
+	width: 45,
+	height: 65,
 	draw: function() {
-		this.y = this.y + (2 * this.speedMult);
+		this.y = this.y + (1.5 * this.speedMult);
 		if (this.hp == 0) {
 			delete enemies[this.enemyID];
 			return;
