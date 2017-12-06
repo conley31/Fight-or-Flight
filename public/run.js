@@ -24,8 +24,10 @@ function simple() {
 	enemies.push(e4);
 	var e5 = new basicEnemy(90, 10);
 	enemies.push(e5);
-	var e6 =new basicEnemy(150, 3;
+	var e6 =new basicEnemy(150, 3);
 	enemies.push(e6);
+	var e7 = new wideEnemy(240, -10);
+	enemies.push(e7);
 }
 function update() {
 	if(players != null && player == null){
