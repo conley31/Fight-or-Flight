@@ -56,7 +56,7 @@ function update() {
 			}
 
 			if(s == 0){
-				simple();
+				levelOne();
 				s = 1;
 			}
 		}
