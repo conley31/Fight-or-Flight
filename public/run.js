@@ -7,6 +7,7 @@ var gameState = "NOT_RUNNING";
 
 //var numOfEnemies = 0;
 var numOfProjectiles = 0;
+var enemiesDefeated = 0;
 var players = [];
 var projectiles = [];
 var enemies = [];
@@ -54,7 +55,12 @@ function update() {
 					players[i].shoot();
 				}
 			}
-
+			console.log(enemiesDefeated);
+			console.log(numOfEnemies);
+			if (s == 1 && enemiesDefeated == numOfEnemies) {
+				levelTwo();
+				s = 2;
+			}
 			if(s == 0){
 				levelOne();
 				s = 1;
@@ -72,10 +78,13 @@ function draw() {
 			players[i].draw();
 		}
 	}
+	enemiesDefeated = 0;
 	for (i = 0; i < numOfEnemies; i++) {
 		if (enemies[i] != null) {
 			enemies[i].collision();
 			enemies[i].draw();
+		} else {
+			enemiesDefeated++;
 		}
 	}
 

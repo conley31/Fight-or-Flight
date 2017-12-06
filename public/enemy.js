@@ -52,7 +52,7 @@ fastEnemy.prototype = {
 	collision: function() {
 		for (i = 0; i < numOfProjectiles; i++) {
 			if (projectiles[i] != null) {
-				if (projectiles[i].x > this.x && projectiles[i].x < (this.x + this.width) && projectiles[i].y < this.y && projectiles[i].y > (this.y - this.height)) {
+				if (projectiles[i].x > this.x && projectiles[i].x < (this.x + this.width) && projectiles[i].y < (this.y + this.height)) {
 					players[projectiles[i].playerID].score += 10;
 					this.hp--;
 					if (this.hp == 0) {
