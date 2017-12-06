@@ -7,13 +7,20 @@ var express = require('express'),
   fs = require('fs'),
   nconf = require('nconf'),
   morgan = require('morgan'),
-  csv = require('fast-csv'),
   session = require('express-session')
 
+var mysql = require('mysql')
+var connection = mysql.createConnection({
+  host     : 'localhost',
+  user     : 'root',
+  password : 'PondTool',
+  database : 'HIGHSCORE'
+});
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
+connection.connect();
 if (app.get('env') === 'production') {
   app.use(morgan('combined'));
 } else {
@@ -46,6 +53,43 @@ io.on('connection', function (socket) {
   });
   socket.on('keys', function (data) {
     socket.broadcast.emit('keyMult', socket.id, data);
+  });
+
+  socket.on('HIGHSCORE', function(){
+    var query = "SELECT * FROM player"
+    for(i = 1; i < 16; i++){
+      var temp = query + i;
+      connection.query(temp, function(err, results, feilds){
+        if(err) {
+          throw err;
+        }
+        socket.emit('returnscore', results);
+      });
+    }
+  });
+
+  socket.on('putScore', function(scores){
+    var query = "UPDATE player";
+    var command = " SET name = \"";
+    var command2 = " SET score = \"";
+    for(i = 1; i < 16; i++){
+      if(scores[i-1] != null){
+        if(scores[i-1][0] != null){
+          var temp = query + i + command + scores[i-1][0].name + "\"";
+          connection.query(temp, function(err, results, feilds){
+            if(err) {
+              throw err;
+            }
+          });
+          var temp = query + i + command2 + scores[i-1][0].score + "\"";
+          connection.query(temp, function(err, results, feilds){
+            if(err) {
+              throw err;
+            }
+          });
+        }
+      }
+    }
   });
 });
 
@@ -105,11 +149,12 @@ var server = http.listen(PORT, function() {
 
 // Gracefully handle exits by closing the database pool
 var exitHandler = function() {
-
-  setTimeout(function() {
+  connection.end();
+  process.exit(0);
+  /*setTimeout(function() {
     console.error('Could not close connections in time, forcefully shutting down');
     process.exit(1);
-  }, 30 * 1000);
+  }, 30 * 1000);*/
 
 };
 

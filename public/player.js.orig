@@ -5,6 +5,8 @@ var d = new Date();
 function Player(username){
 	this.x = w / 2;
 	this.y = h;
+	this.hp = 1;
+	this.destroyed = false;
 	console.log(this.x);
 	console.log(this.y);
 	this.width = 40;
@@ -22,7 +24,12 @@ Player.prototype = {
 	y: 0,
 	width: 40,
 	height: 40,
+	running: 0,
 	draw: function() {
+		if (this.hp == 0) {
+			this.destroyed = true;
+			return;
+		}
 		var posX = this.x;
 		var posY = this.y;
 		ctx.beginPath();
@@ -36,22 +43,20 @@ Player.prototype = {
 		ctx.closePath();
 		ctx.font = '12px Arial';
         	ctx.fillStyle = '#000';
-        	ctx.textAlign = 'center';
-        	ctx.fillText(this.username, this.x, h-10);
+        	ctx.textAlign = 'left';
+        	if(this.username.length > 5){
+        		var test = this.username.substring(0, 5) + "..";
+        		ctx.fillText(test, this.x+4, h-10);
+        	}
+        	else {
+        		ctx.fillText(this.username, this.x + 4, h-10);
+        	}
 	},
 	positionIncreaseX: function() {
-<<<<<<< HEAD
-		this.x += 4;
-		//return this.x;
-	},
-	positionDecreaseX: function() {
-		this.x -= 4;
-=======
 		this.x += 6;
 		if ((this.x + this.width) > w) {
 			this.x = (w - this.width);
 		}
-		console.log("increase");
 		//return this.x;
 	},
 	positionDecreaseX: function() {
@@ -59,14 +64,11 @@ Player.prototype = {
 		if (this.x < 0) {
 			this.x = 0;
 		}
-		console.log("deacrease");
->>>>>>> 5b024b94e2d9f154b0cd51de05704f639e514718
-
 		//return this.y;
 	},
 	shotDelay: function() {
 		var curr = new Date();
-		if (this.prevShot + 400 < curr.getTime()) {
+		if (this.prevShot + 250 < curr.getTime()) {
 			this.prevShot = curr.getTime();
 			return true;
 		}
@@ -75,5 +77,21 @@ Player.prototype = {
 	shoot: function() {
 		var proj = new Projectile(this.x + (this.width / 2), this.y - this.height, this.playerID);
 		projectiles.push(proj);
+	},
+	collision: function() {
+		console.log("checking hit");
+		for (i = 0; i < numOfEnemies; i++) {
+			if (enemies[i] != null) {
+<<<<<<< HEAD
+				if (enemies[i].x > this.x && (enemies[i].x + enemies[i].width) < (this.x + this.width) && enemies[i].y < this.y && (enemies[i].y - enemies[i].height) > (this.y - this.height)) {
+					console.log("hit");
+=======
+				if ((this.x + (this.width / 2)) > enemies[i].x && (this.x + (this.width / 2)) < (enemies[i].x + enemies[i].width) && (this.y - this.height) < (enemies[i].y + enemies[i].height)) {
+>>>>>>> 600a2b75311007ff8385552e8f1d9039bc6f3428
+					this.hp--;
+					enemies[i].hp--;
+				}
+			}
+		}
 	}
 };
