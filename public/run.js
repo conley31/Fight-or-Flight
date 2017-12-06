@@ -130,6 +130,22 @@ function start() {
 	}
 	else if(gameState == "GAME_OVER"){
 		endScreen();
+		// clean up
+		numOfEnemies = 0;
+		speed = 1;
+		enemies = [];
+		numOfProjectiles = 0;
+		projectiles = [];
+		enemiesDefeated = 0;
+		s = 0;
+		for (i = 0; i < numOfPlayers; i++) {
+			players[i].score = 0;
+			players[i].running = 0;
+			players[i].hp = 1;
+			players[i].destroyed = false;
+		}
+		gameState = "NEXT_LEVEL";
+		//
 	}
 	else {
 		draw();

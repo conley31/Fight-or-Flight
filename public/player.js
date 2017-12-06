@@ -68,7 +68,7 @@ Player.prototype = {
 	},
 	shotDelay: function() {
 		var curr = new Date();
-		if (this.prevShot + 200 < curr.getTime()) {
+		if (this.prevShot + 50 < curr.getTime()) {
 			this.prevShot = curr.getTime();
 			return true;
 		}

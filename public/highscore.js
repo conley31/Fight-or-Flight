@@ -22,7 +22,7 @@ function updateHighScore(){
 
 }
 
-function getHighSchore(){
+function getHighScore(){
 
 }
 
@@ -35,7 +35,7 @@ function levelScreen() {
 	ct.fillStyle = '#000';
 	ct.textAlign = 'center';
 	ct.fillText("NEXT LEVEL", wS / 2, hS / 2);
-	// wait for 5 seconds
+	// wait for 3 seconds
 	var time = new Date();
 	var check = new Date();
 	while (check.getTime() < (time.getTime() + 3000)) {
