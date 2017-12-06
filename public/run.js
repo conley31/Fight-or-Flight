@@ -9,6 +9,8 @@ var gameState = "NOT_RUNNING";
 var numOfProjectiles = 0;
 var enemiesDefeated = 0;
 var players = [];
+var powerups = [];
+var numOfPowerups = 0;
 var projectiles = [];
 var enemies = [];
 var player;
@@ -116,6 +118,11 @@ function draw() {
 	for (i = 0; i < numOfProjectiles; i++) {
 		if (projectiles[i] != null) {
 			projectiles[i].draw();
+		}
+	}
+	for (i = 0; i < numOfPowerups; i++) {
+		if (powerups[i] != null) {
+			powerups[i].draw();
 		}
 	}
 	playerScore();
