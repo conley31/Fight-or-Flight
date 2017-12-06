@@ -37,8 +37,8 @@ Player.prototype = {
 		ctx.closePath();
 		ctx.font = '12px Arial';
         	ctx.fillStyle = '#000';
-        	ctx.textAlign = 'center';
-        	ctx.fillText(this.username, this.x, h-10);
+        	ctx.textAlign = 'left';
+        	ctx.fillText(this.username, this.x + 4, h-10);
 	},
 	positionIncreaseX: function() {
 		this.x += 6;
