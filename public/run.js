@@ -69,6 +69,7 @@ function draw() {
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
 	var i;
 	for(i=0;i < numOfPlayers; i++){
+		players[i].collision();
 		players[i].draw();
 	}
 	for (i = 0; i < numOfProjectiles; i++) {
