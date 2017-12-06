@@ -28,7 +28,7 @@ function simple() {
 	enemies.push(e6);
 	var e7 = new wideEnemy(240, -10);
 	enemies.push(e7);
-	var e8 = new fastEnemy(280, -10);
+	var e8 = new fastEnemy(330, -10);
 	enemies.push(e8);
 }
 function update() {
