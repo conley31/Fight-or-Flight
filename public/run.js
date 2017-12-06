@@ -14,6 +14,7 @@ var enemies = [];
 var player;
 var s = 0;
 var speed = 1;
+var firstGame = true;
 
 function simple() {
 	var e1 = new basicEnemy(0, -60);
@@ -82,6 +83,7 @@ function update() {
 				projectiles = [];
 				numOfProjectiles = 0;
 				s = 2;
+		//		levelScreen();
 				levelTwo(speed);
 			}
 			if(s == 0){
@@ -122,7 +124,11 @@ function draw() {
 function start() {
 	update();
 	if(gameState == "NOT_RUNNING"){
-		startScreen();
+		if (firstGame) {
+			startScreen();
+		} else {
+			endScreen();
+		}
 	}
 	else if(gameState == "NEXT_LEVEL") {
 		levelScreen();
@@ -144,7 +150,8 @@ function start() {
 			players[i].hp = 1;
 			players[i].destroyed = false;
 		}
-		gameState = "NEXT_LEVEL";
+		firstGame = false;
+		gameState = "NOT_RUNNING";
 		//
 	}
 	else {

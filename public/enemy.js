@@ -80,7 +80,7 @@ boss1.prototype = {
 	collision: function() {
 		for (i = 0; i < numOfProjectiles; i++) {
 			if (projectiles[i] != null) {
-				if (projectiles[i].x > this.x && projectiles[i].x < (this.x + this.width) && projectiles[i].y < (this.y + this.height)) {
+				if (projectiles[i].x > this.x && projectiles[i].x < (this.x + this.width) && (projectiles[i].y - projectiles[i].height) < (this.y + this.height) && projectiles[i].y > this.y) {
 					players[projectiles[i].playerID].score += 10;
 					this.hp--;
 					if (this.hp == 0) {
@@ -115,7 +115,7 @@ fastEnemy.prototype = {
 	collision: function() {
 		for (i = 0; i < numOfProjectiles; i++) {
 			if (projectiles[i] != null) {
-				if (projectiles[i].x > this.x && projectiles[i].x < (this.x + this.width) && projectiles[i].y < (this.y + this.height)) {
+				if (projectiles[i].x > this.x && projectiles[i].x < (this.x + this.width) && (projectiles[i].y - projectiles[i].height) < (this.y + this.height)) {
 					players[projectiles[i].playerID].score += 10;
 					this.hp--;
 					if (this.hp == 0) {
@@ -151,7 +151,7 @@ wideEnemy.prototype = {
 	collision: function() {
 		for (i = 0; i < numOfProjectiles; i++) {
 			if (projectiles[i] != null) {
-				if (projectiles[i].x > this.x && projectiles[i].x < (this.x + this.width) && projectiles[i].y < this.y && projectiles[i].y > (this.y - this.height)) {
+				if (projectiles[i].x > this.x && projectiles[i].x < (this.x + this.width) && (projectiles[i].y - projectiles[i].height) < (this.y + this.height)) {
 					players[projectiles[i].playerID].score += 10;
 					this.hp--;
 					if (this.hp == 0) {
@@ -189,7 +189,7 @@ basicEnemy.prototype = {
 	collision: function() {
 		for (i = 0; i < numOfProjectiles; i++) {
 			if (projectiles[i] != null) {
-				if (projectiles[i].x > this.x && projectiles[i].x < (this.x + this.width) && projectiles[i].y < this.y && projectiles[i].y > (this.y - this.height)) {
+				if (projectiles[i].x > this.x && projectiles[i].x < (this.x + this.width) && (projectiles[i].y - projectiles[i].height) < (this.y + this.height)) {
 					players[projectiles[i].playerID].score += 10;
 					this.hp--;
 					if (this.hp == 0) {
