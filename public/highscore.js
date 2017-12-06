@@ -38,7 +38,7 @@ function levelScreen() {
 	// wait for 5 seconds
 	var time = new Date();
 	var check = new Date();
-	while (check.getTime() < (time.getTime() + 5000)) {
+	while (check.getTime() < (time.getTime() + 3000)) {
 		check = new Date();
 	}
 }

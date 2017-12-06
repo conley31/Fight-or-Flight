@@ -13,6 +13,7 @@ var projectiles = [];
 var enemies = [];
 var player;
 var s = 0;
+var speed = 1;
 
 function simple() {
 	var e1 = new basicEnemy(0, -60);
@@ -56,6 +57,15 @@ function update() {
 				}
 			}
 			console.log(enemiesDefeated);
+			if (s == 3 && enemiesDefeated == numOfEnemies) {
+				enemiesDefeated = 0;
+				numOfEnemies = 0;
+				enemies = [];
+				projectiles = [];
+				numOfProjectiles = 0;
+				s = 0;
+				speed += 0.2;
+			}
 			if (s == 2 && enemiesDefeated == numOfEnemies) {
 				enemiesDefeated = 0;
 				numOfEnemies = 0;
@@ -63,7 +73,7 @@ function update() {
 				projectiles = [];
 				numOfProjectiles = 0;
 				s = 3;
-				levelThree();
+				levelThree(speed);
 			}
 			if (s == 1 && enemiesDefeated == numOfEnemies) {
 				enemiesDefeated = 0;
@@ -72,10 +82,10 @@ function update() {
 				projectiles = [];
 				numOfProjectiles = 0;
 				s = 2;
-				levelTwo();
+				levelTwo(speed);
 			}
 			if(s == 0){
-				levelOne();
+				levelOne(speed);
 				s = 1;
 			}
 		}
