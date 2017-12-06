@@ -1,7 +1,7 @@
 function Projectile(x, y, playerID) {
 	this.x = x;
 	this.y = y;
-	this.width = 2;
+	this.width = 4;
 	this.height = 10;
 	this.projID = numOfProjectiles;
 	numOfProjectiles++;
@@ -9,7 +9,7 @@ function Projectile(x, y, playerID) {
 }
 
 Projectile.prototype = {
-	width: 2,
+	width: 4,
 	height: 10,
 	draw: function() {
 		console.log("inside projectile draw");

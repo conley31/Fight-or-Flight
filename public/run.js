@@ -16,16 +16,20 @@ var s = 0;
 function simple() {
 	var e1 = new basicEnemy(0, -60);
 	enemies.push(e1);
-	var e2 = new basicEnemy(60, -60);
+	var e2 = new basicEnemy(80, -70);
 	enemies.push(e2);
-	var e3 = new basicEnemy(120, -60);
+	var e3 = new basicEnemy(140, -60);
 	enemies.push(e3);
-	var e4 = new basicEnemy(0, 0);
+	var e4 = new basicEnemy(0, 5);
 	enemies.push(e4);
-	var e5 = new basicEnemy(60, 0);
+	var e5 = new basicEnemy(90, 10);
 	enemies.push(e5);
-	var e6 =new basicEnemy(120, 0);
+	var e6 =new basicEnemy(150, 3);
 	enemies.push(e6);
+	var e7 = new wideEnemy(240, -10);
+	enemies.push(e7);
+	var e8 = new fastEnemy(330, -10);
+	enemies.push(e8);
 }
 function update() {
 	if(players != null && player == null){
@@ -52,7 +56,7 @@ function update() {
 			}
 
 			if(s == 0){
-				simple();
+				levelOne();
 				s = 1;
 			}
 		}
@@ -69,12 +73,8 @@ function draw() {
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
 	var i;
 	for(i=0;i < numOfPlayers; i++){
+		players[i].collision();
 		players[i].draw();
-	}
-	for (i = 0; i < numOfProjectiles; i++) {
-		if (projectiles[i] != null) {
-			projectiles[i].draw();
-		}
 	}
 	for (i = 0; i < numOfEnemies; i++) {
 		if (enemies[i] != null) {
@@ -82,6 +82,13 @@ function draw() {
 			enemies[i].draw();
 		}
 	}
+
+	for (i = 0; i < numOfProjectiles; i++) {
+		if (projectiles[i] != null) {
+			projectiles[i].draw();
+		}
+	}
+	
 }
 
 function start() {
