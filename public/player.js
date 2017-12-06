@@ -53,14 +53,14 @@ Player.prototype = {
         	}
 	},
 	positionIncreaseX: function() {
-		this.x += 6;
+		this.x += 8;
 		if ((this.x + this.width) > w) {
 			this.x = (w - this.width);
 		}
 		//return this.x;
 	},
 	positionDecreaseX: function() {
-		this.x -= 6;
+		this.x -= 8;
 		if (this.x < 0) {
 			this.x = 0;
 		}
@@ -68,7 +68,7 @@ Player.prototype = {
 	},
 	shotDelay: function() {
 		var curr = new Date();
-		if (this.prevShot + 250 < curr.getTime()) {
+		if (this.prevShot + 200 < curr.getTime()) {
 			this.prevShot = curr.getTime();
 			return true;
 		}

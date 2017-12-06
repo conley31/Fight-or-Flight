@@ -26,17 +26,17 @@ function fastEnemy(x, y) {
 	this.y = y;
 	this.hp = 1;
 	this.points = 150;
-	this.width = 25;
+	this.width = 30;
 	this.height = 55;
 	this.enemyID = numOfEnemies;
 	numOfEnemies++;
 }
 
 fastEnemy.prototype = {
-	width: 25,
+	width: 30,
 	height: 55,
 	draw: function() {
-		this.y = this.y + 2.5;
+		this.y = this.y + 2;
 		if (this.hp == 0) {
 			delete enemies[this.enemyID];
 			return;
@@ -72,7 +72,7 @@ wideEnemy.prototype = {
 	width: 70,
 	height: 30,
 	draw: function() {
-		this.y = this.y + 0.5;
+		this.y = this.y + 0.7;
 		if (this.hp == 0) {
 			delete enemies[this.enemyID];
 			return;
