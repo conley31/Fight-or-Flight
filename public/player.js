@@ -14,8 +14,10 @@ function Player(username){
 	this.score = 0;
 	if (username == "dev0") {
 		this.delay = 25;
+		this.speed = 15;
 	} else {
 		this.delay = 150;
+		this.speed = 10;
 	}
 	this.playerID = numOfPlayers;
 	numOfPlayers++;
@@ -58,14 +60,14 @@ Player.prototype = {
         	}
 	},
 	positionIncreaseX: function() {
-		this.x += 10;
+		this.x += this.speed;
 		if ((this.x + this.width) > w) {
 			this.x = (w - this.width);
 		}
 		//return this.x;
 	},
 	positionDecreaseX: function() {
-		this.x -= 10;
+		this.x -= this.speed;
 		if (this.x < 0) {
 			this.x = 0;
 		}
