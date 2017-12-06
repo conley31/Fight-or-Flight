@@ -60,12 +60,6 @@ function update() {
 				s = 1;
 			}
 		}
-		else if (gameState === "GAME_OVER") {
-			ctx.font = "30px Arial";
-			ctx.fillStyle = "#000";
-			ctx.textAlign = "center"
-			ctx.fillText("GAME OVER", w / 2, h / 2);
-		}
 	}
 	
 }
@@ -93,9 +87,17 @@ function draw() {
 
 function start() {
 	update();
-	draw();
+	if(gameState == "NOT_RUNNING"){
+		startScreen();
+	}
+	else if(gameState == "GAME_OVER"){
+		endScreen();
+	}
+	else {
+		draw();
+	}
+
 	requestAnimationFrame(start);
 }
-
 start();
 
