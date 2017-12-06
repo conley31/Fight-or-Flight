@@ -2,6 +2,8 @@ function levelOne(speed) {
 //	console.log("in levelOne");
 //	console.log(speed);
 	var e1 = new basicEnemy(0, 0, speed);
+	//var p1 = new rapidFire(50, 50, speed);
+	//powerups.push(p1);
 	enemies.push(e1);
 	var e2 = new basicEnemy(65, 3, speed);
 	enemies.push(e2);

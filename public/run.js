@@ -62,6 +62,13 @@ function update() {
 				}
 			}
 			console.log(enemiesDefeated);
+			var min = Math.ceil(0);
+			var max = Math.floor(600000);
+			var rand = Math.floor(Math.random() * (max - min)) + min;
+			if (rand < 600) {
+				var p1 = new rapidFire(rand, -40, 1);
+				powerups.push(p1);
+			}
 			if (s == 3 && enemiesDefeated == numOfEnemies) {
 				enemiesDefeated = 0;
 				numOfEnemies = 0;
