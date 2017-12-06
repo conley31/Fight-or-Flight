@@ -30,8 +30,12 @@ basicEnemy.prototype = {
 		for (i = 0; i < numOfProjectiles; i++) {
 			if (projectiles[i] != null) {
 				if (projectiles[i].x > this.x && projectiles[i].x < (this.x + this.width) && projectiles[i].y < this.y && projectiles[i].y > (this.y - this.height)) {
-					delete projectiles[i];
+					players[projectiles[i].playerID].score += 10;
 					this.hp--;
+					if (this.hp == 0) {
+						players[projectiles[i].playerID].score += 100;
+					}
+					delete projectiles[i];
 				}
 			}
 		}

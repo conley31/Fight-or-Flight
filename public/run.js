@@ -16,15 +16,15 @@ var s = 0;
 function simple() {
 	var e1 = new basicEnemy(0, -60);
 	enemies.push(e1);
-	var e2 = new basicEnemy(60, -60);
+	var e2 = new basicEnemy(80, -70);
 	enemies.push(e2);
-	var e3 = new basicEnemy(120, -60);
+	var e3 = new basicEnemy(140, -60);
 	enemies.push(e3);
-	var e4 = new basicEnemy(0, 0);
+	var e4 = new basicEnemy(0, 5);
 	enemies.push(e4);
-	var e5 = new basicEnemy(60, 0);
+	var e5 = new basicEnemy(90, 10);
 	enemies.push(e5);
-	var e6 =new basicEnemy(120, 0);
+	var e6 =new basicEnemy(150, 3;
 	enemies.push(e6);
 }
 function update() {
