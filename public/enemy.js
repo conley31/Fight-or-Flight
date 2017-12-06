@@ -13,8 +13,8 @@ function wideEnemy(x, y) {
 	this.x = x;
 	this.y = y;
 	this.hp = 3;
-	this.width = 50;
-	this.height = 50;
+	this.width = 70;
+	this.height = 30;
 	this.enemyID = numOfEnemies;
 	numOfEnemies++;
 }
