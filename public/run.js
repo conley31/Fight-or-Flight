@@ -4,6 +4,7 @@ var w = canvas.width;
 var h = canvas.height;
 
 var gameState = "NOT_RUNNING";
+var scoreState = 0;
 
 //var numOfEnemies = 0;
 var numOfProjectiles = 0;
@@ -47,6 +48,7 @@ function update() {
 			}
 		}
 		else if (gameState === "RUNNING") { // maybe should be gameState.valueOf()
+			scoreState = 1;
 			for (i = 0; i < numOfPlayers; i++) {
 				if (players[i].keys.left.pressed && !players[i].destroyed) {
 					players[i].positionDecreaseX();
@@ -143,6 +145,10 @@ function start() {
 	}
 	else if(gameState == "GAME_OVER"){
 		endScreen();
+		if(scoreState){
+			getHighScore();
+			scoreState = 0;
+		}
 		// clean up
 		numOfEnemies = 0;
 		speed = 1;

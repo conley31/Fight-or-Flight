@@ -1,7 +1,9 @@
 window.onload = function() {
 	var socket = io.connect();
 	socket.on('connect', function(){
+		scoreList = [];
 		socket.emit('join', prompt('Enter a nick name'));
+		socket.emit('HIGHSCORE');
 
 		keyLoop();
 	});
@@ -33,6 +35,11 @@ window.onload = function() {
 		else if(tempKey){
 			tempKey = null;
 			socket.emit('keys', '');
+		}
+
+		if(gameState == "GAME_OVER" && newScores){
+			socket.emit('putScore', scoreList);
+			newScores = 0;
 		}
 		requestAnimationFrame(keyLoop);
 	}
@@ -71,5 +78,10 @@ window.onload = function() {
         		play.shoot();
         	}
         }
+    });
+
+    socket.on("returnscore", function(results){
+    	scoreList.push(results);
+    	updateHighScore();
     });
 }
