@@ -76,17 +76,19 @@ function draw() {
 		players[i].collision();
 		players[i].draw();
 	}
-	for (i = 0; i < numOfProjectiles; i++) {
-		if (projectiles[i] != null) {
-			projectiles[i].draw();
-		}
-	}
 	for (i = 0; i < numOfEnemies; i++) {
 		if (enemies[i] != null) {
 			enemies[i].collision();
 			enemies[i].draw();
 		}
 	}
+
+	for (i = 0; i < numOfProjectiles; i++) {
+		if (projectiles[i] != null) {
+			projectiles[i].draw();
+		}
+	}
+	
 }
 
 function start() {
