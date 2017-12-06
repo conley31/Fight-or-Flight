@@ -13,7 +13,7 @@ function levelOne() {
 	enemies.push(e6);
 	var e7 = new basicEnemy(383, 3);
 	enemies.push(e7);
-	var e8 = new basicEnemy(420, 0);
+	var e8 = new basicEnemy(425, 0);
 	enemies.push(e8);
 	var e9 = new basicEnemy(476, 8);
 	enemies.push(e9);

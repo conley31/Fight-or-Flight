@@ -5,6 +5,7 @@ function basicEnemy(x, y) {
 	this.hp = 1;
 	this.width = 50;
 	this.height = 50;
+	this.points = 100;
 	this.enemyID = numOfEnemies;
 	numOfEnemies++;
 }
@@ -15,6 +16,7 @@ function wideEnemy(x, y) {
 	this.hp = 3;
 	this.width = 70;
 	this.height = 30;
+	this.points = 200;
 	this.enemyID = numOfEnemies;
 	numOfEnemies++;
 }
@@ -23,6 +25,7 @@ function fastEnemy(x, y) {
 	this.x = x;
 	this.y = y;
 	this.hp = 1;
+	this.points = 150;
 	this.width = 25;
 	this.height = 55;
 	this.enemyID = numOfEnemies;
@@ -53,7 +56,7 @@ fastEnemy.prototype = {
 					players[projectiles[i].playerID].score += 10;
 					this.hp--;
 					if (this.hp == 0) {
-						players[projectiles[i].playerID].score += 100;
+						players[projectiles[i].playerID].score += this.points;
 					}
 					delete projectiles[i];
 				}
@@ -89,7 +92,7 @@ wideEnemy.prototype = {
 					players[projectiles[i].playerID].score += 10;
 					this.hp--;
 					if (this.hp == 0) {
-						players[projectiles[i].playerID].score += 100;
+						players[projectiles[i].playerID].score += this.points;
 					}
 					delete projectiles[i];
 				}
@@ -123,7 +126,7 @@ basicEnemy.prototype = {
 					players[projectiles[i].playerID].score += 10;
 					this.hp--;
 					if (this.hp == 0) {
-						players[projectiles[i].playerID].score += 100;
+						players[projectiles[i].playerID].score += this.points;
 					}
 					delete projectiles[i];
 				}
