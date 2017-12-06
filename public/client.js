@@ -64,6 +64,7 @@ window.onload = function() {
 		}
         var play = NewPlayer(name);
         if(play != player){
+        	console.log(key);
         	if(key == 'left'){
         		play.positionDecreaseX()
         	}
