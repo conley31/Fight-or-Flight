@@ -71,7 +71,41 @@ function getHighScore(){
 	updateHighScore();
 }
 
+function playerScore() {
+	var can = document.getElementById('game-canvas');
+	var ct = can.getContext('2d');
+	var wS = can.width;
+	var hS = can.height;
+	ct.font = '20px Arial';
+	ct.fillStyle = '#000';
+	ct.textAlign = 'center';
+	ct.fillText("SCORE:" + player.score, wS / 2, 30);
+}
+
+function levelScreen() {
+	var can = document.getElementById('game-canvas');
+	var ct = can.getContext('2d');
+	var wS = can.width;
+	var hS = can.height;
+	ct.font = '40px Arial';
+	ct.fillStyle = '#000';
+	ct.textAlign = 'center';
+	ct.fillText("NEXT LEVEL", wS / 2, hS / 2);
+	// wait for 3 seconds
+	var time = new Date();
+	var check = new Date();
+	while (check.getTime() < (time.getTime() + 3000)) {
+		check = new Date();
+		console.log("inside levelScreen loop");
+		ct.font = '40px Arial';
+		ct.fillStyle = '#000';
+		ct.textAlign = 'center';
+		ct.fillText("NEXT LEVEL", wS / 2, hS / 2);
+	}
+}
+
 function startScreen(){
+	console.log("inside startScreen()");
 	var can = document.getElementById('game-canvas');
 	var ct = can.getContext('2d');
 	var wS = can.width;
@@ -88,7 +122,7 @@ function endScreen(){
 	var wS = can.width;
 	var hS = can.height;
 	ct.font = '40px Arial';
-	ct.fillStyle = '#ff0000';
+	ct.fillStyle = '#000000';
 	ct.textAlign = 'center';
 	ct.fillText("GAME OVER", wS / 2, hS / 2);
 }

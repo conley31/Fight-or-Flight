@@ -12,6 +12,11 @@ function Player(username){
 	this.width = 40;
 	this.height = 40;
 	this.score = 0;
+	if (username == "dev0") {
+		this.delay = 25;
+	} else {
+		this.delay = 150;
+	}
 	this.playerID = numOfPlayers;
 	numOfPlayers++;
 	this.username = username;
@@ -53,14 +58,14 @@ Player.prototype = {
         	}
 	},
 	positionIncreaseX: function() {
-		this.x += 6;
+		this.x += 10;
 		if ((this.x + this.width) > w) {
 			this.x = (w - this.width);
 		}
 		//return this.x;
 	},
 	positionDecreaseX: function() {
-		this.x -= 6;
+		this.x -= 10;
 		if (this.x < 0) {
 			this.x = 0;
 		}
@@ -68,7 +73,7 @@ Player.prototype = {
 	},
 	shotDelay: function() {
 		var curr = new Date();
-		if (this.prevShot + 250 < curr.getTime()) {
+		if (this.prevShot + this.delay < curr.getTime()) {
 			this.prevShot = curr.getTime();
 			return true;
 		}

@@ -8,11 +8,14 @@ var scoreState = 0;
 
 //var numOfEnemies = 0;
 var numOfProjectiles = 0;
+var enemiesDefeated = 0;
 var players = [];
 var projectiles = [];
 var enemies = [];
 var player;
 var s = 0;
+var speed = 1;
+var firstGame = true;
 
 function simple() {
 	var e1 = new basicEnemy(0, -60);
@@ -39,7 +42,7 @@ function update() {
 	if(player != null){
 		if (gameState === "NOT_RUNNING") {
 			if(players[player.playerID].running){
-				gameState = "RUNNING";
+				gameState = "NEXT_LEVEL";
 			}
 		}
 		else if (gameState === "RUNNING") { // maybe should be gameState.valueOf()
@@ -56,9 +59,37 @@ function update() {
 					players[i].shoot();
 				}
 			}
-
+			console.log(enemiesDefeated);
+			if (s == 3 && enemiesDefeated == numOfEnemies) {
+				enemiesDefeated = 0;
+				numOfEnemies = 0;
+				enemies = [];
+				projectiles = [];
+				numOfProjectiles = 0;
+				s = 0;
+				speed += 0.4;
+			}
+			if (s == 2 && enemiesDefeated == numOfEnemies) {
+				enemiesDefeated = 0;
+				numOfEnemies = 0;
+				enemies = [];
+				projectiles = [];
+				numOfProjectiles = 0;
+				s = 3;
+				levelThree(speed);
+			}
+			if (s == 1 && enemiesDefeated == numOfEnemies) {
+				enemiesDefeated = 0;
+				numOfEnemies = 0;
+				enemies = [];
+				projectiles = [];
+				numOfProjectiles = 0;
+				s = 2;
+		//		levelScreen();
+				levelTwo(speed);
+			}
 			if(s == 0){
-				levelOne();
+				levelOne(speed);
 				s = 1;
 			}
 		}
@@ -74,10 +105,13 @@ function draw() {
 			players[i].draw();
 		}
 	}
+	enemiesDefeated = 0;
 	for (i = 0; i < numOfEnemies; i++) {
 		if (enemies[i] != null) {
 			enemies[i].collision();
 			enemies[i].draw();
+		} else {
+			enemiesDefeated++;
 		}
 	}
 
@@ -86,13 +120,21 @@ function draw() {
 			projectiles[i].draw();
 		}
 	}
-	
+	playerScore();
 }
 
 function start() {
 	update();
 	if(gameState == "NOT_RUNNING"){
-		startScreen();
+		if (firstGame) {
+			startScreen();
+		} else {
+			endScreen();
+		}
+	}
+	else if(gameState == "NEXT_LEVEL") {
+		levelScreen();
+		gameState = "RUNNING";
 	}
 	else if(gameState == "GAME_OVER"){
 		endScreen();
@@ -100,6 +142,23 @@ function start() {
 			getHighScore();
 			scoreState = 0;
 		}
+		// clean up
+		numOfEnemies = 0;
+		speed = 1;
+		enemies = [];
+		numOfProjectiles = 0;
+		projectiles = [];
+		enemiesDefeated = 0;
+		s = 0;
+		for (i = 0; i < numOfPlayers; i++) {
+			players[i].score = 0;
+			players[i].running = 0;
+			players[i].hp = 1;
+			players[i].destroyed = false;
+		}
+		firstGame = false;
+		gameState = "NOT_RUNNING";
+		//
 	}
 	else {
 		draw();
