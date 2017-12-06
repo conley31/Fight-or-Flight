@@ -56,10 +56,23 @@ function update() {
 				}
 			}
 			console.log(enemiesDefeated);
-			console.log(numOfEnemies);
+			if (s == 2 && enemiesDefeated == numOfEnemies) {
+				enemiesDefeated = 0;
+				numOfEnemies = 0;
+				enemies = [];
+				projectiles = [];
+				numOfProjectiles = 0;
+				s = 3;
+				levelThree();
+			}
 			if (s == 1 && enemiesDefeated == numOfEnemies) {
-				levelTwo();
+				enemiesDefeated = 0;
+				numOfEnemies = 0;
+				enemies = [];
+				projectiles = [];
+				numOfProjectiles = 0;
 				s = 2;
+				levelTwo();
 			}
 			if(s == 0){
 				levelOne();

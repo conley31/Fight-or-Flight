@@ -43,7 +43,7 @@ function endScreen(){
 	var wS = can.width;
 	var hS = can.height;
 	ct.font = '40px Arial';
-	ct.fillStyle = '#ff0000';
+	ct.fillStyle = '#000000';
 	ct.textAlign = 'center';
 	ct.fillText("GAME OVER", wS / 2, hS / 2);
 }

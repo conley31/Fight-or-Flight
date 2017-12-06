@@ -114,3 +114,8 @@ function levelTwo() {
 	enemies.push(e35);
 
 }
+
+function levelThree() {
+	var e1 = new boss1(0, -70);
+	enemies.push(e1);
+}
