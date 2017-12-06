@@ -43,7 +43,13 @@ Player.prototype = {
 		ctx.font = '12px Arial';
         	ctx.fillStyle = '#000';
         	ctx.textAlign = 'left';
-        	ctx.fillText(this.username, this.x + 4, h-10);
+        	if(this.username.length > 5){
+        		var test = this.username.substring(0, 5) + "..";
+        		ctx.fillText(test, this.x+4, h-10);
+        	}
+        	else {
+        		ctx.fillText(this.username, this.x + 4, h-10);
+        	}
 	},
 	positionIncreaseX: function() {
 		this.x += 6;
@@ -72,9 +78,11 @@ Player.prototype = {
 		projectiles.push(proj);
 	},
 	collision: function() {
+		console.log("checking hit");
 		for (i = 0; i < numOfEnemies; i++) {
 			if (enemies[i] != null) {
 				if (enemies[i].x > this.x && (enemies[i].x + enemies[i].width) < (this.x + this.width) && enemies[i].y < this.y && (enemies[i].y - enemies[i].height) > (this.y - this.height)) {
+					console.log("hit");
 					this.hp--;
 					enemies[i].hp--;
 				}

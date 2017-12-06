@@ -12,7 +12,6 @@ Projectile.prototype = {
 	width: 4,
 	height: 10,
 	draw: function() {
-		console.log("inside projectile draw");
 		this.y = this.y - 8;
 		if (this.y < 0) {
 			numOfProjectiles--;
