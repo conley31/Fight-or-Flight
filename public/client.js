@@ -112,6 +112,9 @@ window.onload = function() {
     });
 
     socket.on("state", function(mode){
-    	gameState = mode;
+    	if(player != null){
+    		player.destroyed = true;
+    		gameState = mode;
+    	}
     });
 }

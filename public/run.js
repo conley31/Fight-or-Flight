@@ -172,6 +172,7 @@ function start() {
 			player.state = "RUNNING";
 			gameState = "RUNNING";
 			loading = 0;
+			console.log(loading);
 		}
 		levelScreen();
 	}
