@@ -21,6 +21,7 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
 var mode = "NOT_RUNNING";
+var players = [];
 
 connection.connect();
 if (app.get('env') === 'production') {
@@ -51,11 +52,16 @@ app.get('/', function(req, res) {
 io.on('connection', function (socket) {
   socket.on('join', function(data) {
     socket.id = data;
-    socket.broadcast.emit('newplayer', data);
+    socket.broadcast.emit('newplayer', data, players);
     socket.emit('state', mode);
   });
+
   socket.on('keys', function (data) {
     socket.broadcast.emit('keyMult', socket.id, data);
+  });
+
+  socket.on('players', function(data){
+    players = data;
   });
 
   socket.on('HIGHSCORE', function(){

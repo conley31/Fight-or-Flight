@@ -3,6 +3,7 @@ window.onload = function() {
 	socket.on('connect', function(){
 		scoreList = [];
 		socket.emit('join', prompt('Enter a nick name under 10 characters'));
+
 		socket.emit('HIGHSCORE');
 
 		keyLoop();
@@ -67,17 +68,24 @@ window.onload = function() {
 		if (holdNames[name]){
             return holdNames[name];
         } else {
-        	console.log(players);
+        	//console.log("players before");
+        	//console.log(players);
             var player = new Player(name);
+            console.log(player);
         	if(gameState == "RUNNING"){
         		player.destroyed = true;
         	}
             players.push(player);
+            //console.log("players after");
+            //console.log(players);
+            socket.emit("players", players);
             holdNames[name] = player;
         }
 	}
 
-	socket.on('newplayer', function(name, mode){
+	socket.on('newplayer', function(name, data){
+		players = data;
+		numOfPlayers = players.length;
 		NewPlayer(name);
 	});
 
@@ -87,6 +95,7 @@ window.onload = function() {
 				players[i].running = 1;
 			}
 		}
+		console.log("keyMult");
         var play = NewPlayer(name);
         if(play != player){
         	if(key.includes('left')){

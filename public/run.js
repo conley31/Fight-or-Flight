@@ -18,6 +18,7 @@ var player;
 var s = 0;
 var speed = 1;
 var firstGame = true;
+var playerLoc;
 
 function simple() {
 	var e1 = new basicEnemy(0, -60);
@@ -174,7 +175,9 @@ function start() {
 			loading = 0;
 			console.log(loading);
 		}
-		levelScreen();
+		else {
+			levelScreen();
+		}
 	}
 	else if(gameState == "GAME_OVER"){
 		endScreen();
