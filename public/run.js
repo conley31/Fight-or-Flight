@@ -191,6 +191,8 @@ function start() {
 			players[i].score = 0;
 			players[i].running = 0;
 			players[i].hp = 1;
+			players[i].delay = 175;
+			players[i].speed = 10;
 			players[i].destroyed = false;
 		}
 		firstGame = false;
