@@ -45,6 +45,14 @@ window.onload = function() {
 			socket.emit("overS", "NEXT_LEVEL");
 		}
 
+		if(gameState == "NOT_RUNNING"){
+			socket.emit("overS", "NOT_RUNNING");
+		}
+
+		if(gameState == "RUNNING"){
+			socket.emit("overS", "RUNNING");
+		}
+
 		if(newScores){
 			console.log("UPDATE DATABASE");
 			socket.emit('putScore', scoreList);
@@ -60,6 +68,7 @@ window.onload = function() {
 		if (holdNames[name]){
             return holdNames[name];
         } else {
+        	console.log(players);
             var player = new Player(name);
         	if(gameState == "RUNNING"){
         		player.destroyed = true;
@@ -69,7 +78,7 @@ window.onload = function() {
         }
 	}
 
-	socket.on('newplayer', function(name){
+	socket.on('newplayer', function(name, mode){
 		NewPlayer(name);
 	});
 
@@ -100,5 +109,9 @@ window.onload = function() {
 
     socket.on("overC", function(state){
     	gameState = state;
+    });
+
+    socket.on("state", function(mode){
+    	gameState = mode;
     });
 }
