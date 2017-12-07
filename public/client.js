@@ -1,3 +1,4 @@
+var waitingCount = 0;
 window.onload = function() {
 	var socket = io.connect();
 	socket.on('connect', function(){
@@ -127,5 +128,9 @@ window.onload = function() {
     		player.destroyed = true;
     	}
     	gameState = mode;
+    });
+
+    socket.on('waiting', function(){
+    	waitingCount++;
     });
 }

@@ -166,7 +166,7 @@ function start() {
 	}
 	else if(gameState == "NEXT_LEVEL") {
 		var check = new Date();
-		if(!loading){
+		if(!loading && waitingCount == numOfPlayers - 1){
 			time = new Date();
 			levelScreen();
 		}
