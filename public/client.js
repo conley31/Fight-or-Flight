@@ -76,17 +76,18 @@ window.onload = function() {
         		player.destroyed = true;
         	}
             players.push(player);
-            //console.log("players after");
-            //console.log(players);
-            socket.emit("players", players);
+            //socket.emit("players", players);
             holdNames[name] = player;
         }
 	}
 
 	socket.on('newplayer', function(name, data){
 		if(name != null){
+			/*for(i = 0; i < data.length; i++){
+				data[i] = new Player(data[i].username);
+			}
 			players = data;
-			numOfPlayers = players.length;
+			numOfPlayers = players.length;*/
 			NewPlayer(name);
 		}
 	});

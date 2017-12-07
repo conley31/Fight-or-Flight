@@ -1,5 +1,5 @@
 function levelOne(speed) {
-//	console.log("in levelOne");
+	//console.log("in levelOne");
 //	console.log(speed);
 	var e1 = new basicEnemy(0, 0, speed);
 	var p1 = new rapidFire(67, -200, speed);

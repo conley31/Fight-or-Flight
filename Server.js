@@ -86,6 +86,8 @@ io.on('connection', function (socket) {
     }
     else if(state == "RUNNING"){
       mode = "RUNNING";
+      levelOne(2);
+
     }
     else if(state == "NOT_RUNNING"){
       mode = "NOT_RUNNING";
