@@ -46,8 +46,16 @@ function update() {
 	if(player != null){
 		if (gameState === "NOT_RUNNING") {
 			if(players[player.playerID].running){
-				gameState = "NEXT_LEVEL";
-				player.state = "NEXT_LEVEL";
+				if (firstGame) {
+					gameState = "NEXT_LEVEL";
+					player.state = "NEXT_LEVEL";
+				} else {
+					for (i = 0; i < numOfPlayers; i++) {
+						if (players[i].keys.up.pressed) {
+							gameState = "NEXT_LEVEL";
+						}
+					}
+				}
 			}
 		}
 		else if (gameState === "RUNNING") { // maybe should be gameState.valueOf()
