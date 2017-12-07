@@ -96,6 +96,7 @@ function update() {
 				numOfProjectiles = 0;
 				s = 3;
 				levelThree(speed);
+				gameState = "NEXT_LEVEL";
 			}
 			if (s == 1 && enemiesDefeated == numOfEnemies) {
 				enemiesDefeated = 0;
@@ -106,9 +107,11 @@ function update() {
 				s = 2;
 		//		levelScreen();
 				levelTwo(speed);
+				gameState = "NEXT_LEVEL";
 			}
 			if(s == 0){
 				levelOne(speed);
+				gameState = "NEXT_LEVEL";
 				s = 1;
 			}
 		}
