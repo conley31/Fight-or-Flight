@@ -168,6 +168,7 @@ function start() {
 		var check = new Date();
 		if(!loading){
 			time = new Date();
+			levelScreen();
 		}
 		else if( check.getTime() >= (time.getTime() + 3000)){
 			player.state = "RUNNING";
