@@ -19,7 +19,7 @@ Projectile.prototype = {
 		}
 		var posX = this.x;
 		var posY = this.y;
-		ctx.fillStyle = colors[this.playerID];
+		ctx.fillStyle = '#FFA500';
 		ctx.fillRect(posX, posY, this.width, this.height);	
 	}
 }
