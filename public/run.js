@@ -79,7 +79,7 @@ function update() {
 				powerups.push(p2);
 			}
 			*/
-			/*if (s == 3 && enemiesDefeated == numOfEnemies) {
+			if (s == 3 && enemiesDefeated == numOfEnemies) {
 				enemiesDefeated = 0;
 				numOfEnemies = 0;
 				enemies = [];
@@ -110,7 +110,7 @@ function update() {
 			if(s == 0){
 				levelOne(speed);
 				s = 1;
-			}*/
+			}
 		}
 	}
 	
