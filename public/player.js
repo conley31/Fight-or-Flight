@@ -12,10 +12,10 @@ function Player(username){
 	this.score = 0;
 	if (username == "dev0") {
 		this.delay = 25;
-		this.speed = 15;
-	} else {
-		this.delay = 150;
 		this.speed = 10;
+	} else {
+		this.delay = 200;
+		this.speed = 6;
 	}
 	this.playerID = numOfPlayers;
 	numOfPlayers++;
