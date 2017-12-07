@@ -28,7 +28,7 @@ function getKey(button){
 
 window.addEventListener('keydown', function(event){
 	var listenKey = getKey(event.which);
-	if(listenKey){
+	if(listenKey && gameState != "GAME_OVER"){
 		listenKey.pressed = true;
 		event.preventDefault();
 	}

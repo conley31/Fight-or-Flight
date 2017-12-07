@@ -115,6 +115,7 @@ io.on('connection', function (socket) {
         }
       }
     }
+    socket.broadcast.emit('returnscore', scores);
   });
 });
 

@@ -46,28 +46,27 @@ function getHighScore(){
 		score: ""
 	}]
 
-	for(i = 0; i < numOfPlayers; i++){
 		for(j = 14; j >= 0; j--){
 
 			if(scoreList[j][0] != null){
 				//console.log(scoreList[j][0]);
 				//console.log(players[i].score);
-				if(players[i].score <= parseInt(scoreList[j][0].score)){
+				if(player.score <= parseInt(scoreList[j][0].score)){
 					console.log(j)
-					sample[0].name = players[i].username;
-					sample[0].score = String(players[i].score);
+					sample[0].name = player.username;
+					sample[0].score = String(player.score);
 					scoreList.splice(j+1, 0, sample);
 					break;
 				}
-				else if(players[i].score > parseInt(scoreList[j][0].score) && j == 0){
-					sample[0].name = players[i].username;
-					sample[0].score = String(players[i].score);
+				else if(player.score > parseInt(scoreList[j][0].score) && j == 0){
+					sample[0].name = player.username;
+					sample[0].score = String(player.score);
 					scoreList.splice(0, 0, sample);
 					break;
 				}
 			}
 		}
-	}
+	
 
 	newScores = 1;
 	updateHighScore();
