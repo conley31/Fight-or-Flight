@@ -1,5 +1,5 @@
 var numOfPlayers = 0;
-var colors = ["#0095DD", "#00000"];
+var colors = ["#0095DD", "#D3D3D3"];
 var d = new Date();
 
 function Player(username){
