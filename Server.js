@@ -20,6 +20,8 @@ var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
+var mode = "NOT_RUNNING";
+
 connection.connect();
 if (app.get('env') === 'production') {
   app.use(morgan('combined'));
@@ -49,7 +51,7 @@ app.get('/', function(req, res) {
 io.on('connection', function (socket) {
   socket.on('join', function(data) {
     socket.id = data;
-    socket.broadcast.emit('newplayer', data);
+    socket.broadcast.emit('newplayer', data, mode);
   });
   socket.on('keys', function (data) {
     socket.broadcast.emit('keyMult', socket.id, data);
@@ -70,10 +72,16 @@ io.on('connection', function (socket) {
 
   socket.on("overS", function(state){
     if(state == "GAME_OVER"){
-      socket.broadcast.emit('overC', "GAME_OVER");
+      mode = "GAME_OVER";
     }
     else if(state == "NEXT_LEVEL"){
-      socket.broadcast.emit('overC', "NEXT_LEVEL");
+      mode = "NEXT_LEVEL";
+    }
+    else if(state == "RUNNING"){
+      mode = "RUNNING";
+    }
+    else if(state == "NOT_RUNNING"){
+      mode = "NOT_RUNNING";
     }
   });
 
