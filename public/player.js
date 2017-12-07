@@ -22,6 +22,7 @@ function Player(username){
 	this.username = username;
 	this.keys = new KeySetup();
 	this.prevShot = d.getTime();
+	this.state = "NOT_RUNNING";
 }
 
 Player.prototype = {

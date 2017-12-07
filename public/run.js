@@ -45,6 +45,7 @@ function update() {
 		if (gameState === "NOT_RUNNING") {
 			if(players[player.playerID].running){
 				gameState = "NEXT_LEVEL";
+				player.state = "NEXT_LEVEL";
 			}
 		}
 		else if (gameState === "RUNNING") { // maybe should be gameState.valueOf()
@@ -168,6 +169,7 @@ function start() {
 			time = new Date();
 		}
 		else if( check.getTime() >= (time.getTime() + 3000)){
+			player.state = "RUNNING";
 			gameState = "RUNNING";
 			loading = 0;
 		}
@@ -198,6 +200,7 @@ function start() {
 			players[i].destroyed = false;
 		}
 		firstGame = false;
+		player.state = "NOT_RUNNING";
 		gameState = "NOT_RUNNING";
 		//
 	}

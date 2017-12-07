@@ -68,6 +68,15 @@ io.on('connection', function (socket) {
     }
   });
 
+  socket.on("overS", function(state){
+    if(state == "GAME_OVER"){
+      socket.broadcast.emit('overC', "GAME_OVER");
+    }
+    else if(state == "NEXT_LEVEL"){
+      socket.broadcast.emit('overC', "NEXT_LEVEL");
+    }
+  });
+
   socket.on('putScore', function(scores){
     var query = "UPDATE player";
     var command = " SET name = \"";
