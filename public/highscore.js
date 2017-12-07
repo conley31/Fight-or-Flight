@@ -6,6 +6,7 @@ var startLoc = 24;
 var scoreList = [];
 var newScores = 0;
 var loading = 0;
+var time;
 
 function updateHighScore(){
 	startLoc = 24;
@@ -49,13 +50,13 @@ function getHighScore(){
 		for(j = 14; j >= 0; j--){
 
 			if(scoreList[j][0] != null){
-				console.log(scoreList[j][0]);
-				console.log(players[i].score);
+				//console.log(scoreList[j][0]);
+				//console.log(players[i].score);
 				if(players[i].score <= parseInt(scoreList[j][0].score)){
 					console.log(j)
 					sample[0].name = players[i].username;
 					sample[0].score = String(players[i].score);
-					scoreList.splice(j-1, 0, sample);
+					scoreList.splice(j+1, 0, sample);
 					break;
 				}
 				else if(players[i].score > parseInt(scoreList[j][0].score) && j == 0){
@@ -84,7 +85,6 @@ function playerScore() {
 }
 
 function levelScreen() {
-	console.log("loadLevel");
 	var can = document.getElementById('game-canvas');
 	var ct = can.getContext('2d');
 	var wS = can.width;
@@ -95,6 +95,7 @@ function levelScreen() {
 	ct.textAlign = 'center';
 	ct.fillText("NEXT LEVEL", wS / 2, hS / 2);
 	loading = 1;
+
 	// wait for 3 seconds
 	/*var time = new Date();
 	var check = new Date();
@@ -109,7 +110,6 @@ function levelScreen() {
 }
 
 function startScreen(){
-	console.log("inside startScreen");
 	var can = document.getElementById('game-canvas');
 	var ct = can.getContext('2d');
 	var wS = can.width;

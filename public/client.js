@@ -2,7 +2,7 @@ window.onload = function() {
 	var socket = io.connect();
 	socket.on('connect', function(){
 		scoreList = [];
-		socket.emit('join', prompt('Enter a nick name'));
+		socket.emit('join', prompt('Enter a nick name under 10 characters'));
 		socket.emit('HIGHSCORE');
 
 		keyLoop();
@@ -37,7 +37,8 @@ window.onload = function() {
 			socket.emit('keys', '');
 		}
 
-		if(gameState == "GAME_OVER" && newScores){
+		if(newScores){
+			console.log("UPDATE DATABASE");
 			socket.emit('putScore', scoreList);
 			newScores = 0;
 		}
@@ -51,6 +52,9 @@ window.onload = function() {
             return holdNames[name];
         } else {
             var player = new Player(name);
+        	if(gameState == "RUNNING"){
+        		player.destroyed = true;
+        	}
             players.push(player);
             holdNames[name] = player;
         }
