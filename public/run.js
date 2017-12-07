@@ -156,14 +156,22 @@ function start() {
 	update();
 	if(gameState == "NOT_RUNNING"){
 		if (firstGame) {
+			//levelScreen();
 			startScreen();
 		} else {
 			endScreen();
 		}
 	}
 	else if(gameState == "NEXT_LEVEL") {
+		var check = new Date();
+		if(!loading){
+			time = new Date();
+		}
+		else if( check.getTime() >= (time.getTime() + 3000)){
+			gameState = "RUNNING";
+			loading = 0;
+		}
 		levelScreen();
-		gameState = "RUNNING";
 	}
 	else if(gameState == "GAME_OVER"){
 		endScreen();
