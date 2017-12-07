@@ -84,9 +84,11 @@ window.onload = function() {
 	}
 
 	socket.on('newplayer', function(name, data){
-		players = data;
-		numOfPlayers = players.length;
-		NewPlayer(name);
+		if(name != null){}
+			players = data;
+			numOfPlayers = players.length;
+			NewPlayer(name);
+		}
 	});
 
 	socket.on('keyMult', function(name, key){
