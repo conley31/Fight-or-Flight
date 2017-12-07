@@ -24,6 +24,10 @@ window.onload = function() {
 		if(player.keys.space.pressed){
 			clientKeys.push('space');
 		}
+
+		if(player.keys.up.pressed){
+			clientKeys.push('up');
+		}
 		return clientKeys.join(' ');
 	}
 
@@ -122,6 +126,9 @@ window.onload = function() {
         	}
         	if(key.includes('space') && play.shotDelay()){
         		play.shoot();
+        	}
+        	if(key.includes('up')){
+        		play.keys.up.pressed = true;
         	}
         }
     });
