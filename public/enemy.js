@@ -179,6 +179,7 @@ basicEnemy.prototype = {
 			return;
 		}
 		if (this.y > h) {
+			player.state = "GAME_OVER";
 			gameState = "GAME_OVER";
 		}
 		var posX = this.x;

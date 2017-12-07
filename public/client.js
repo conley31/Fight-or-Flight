@@ -37,6 +37,14 @@ window.onload = function() {
 			socket.emit('keys', '');
 		}
 
+		if(gameState == "GAME_OVER"){
+			socket.emit("overS", "GAME_OVER");
+		}
+
+		if(gameState == "NEXT_LEVEL"){
+			socket.emit("overS", "NEXT_LEVEL");
+		}
+
 		if(newScores){
 			console.log("UPDATE DATABASE");
 			socket.emit('putScore', scoreList);
@@ -48,6 +56,7 @@ window.onload = function() {
 	var holdNames = {};
 
 	function NewPlayer(name){
+		console.log(name);
 		if (holdNames[name]){
             return holdNames[name];
         } else {
@@ -87,5 +96,9 @@ window.onload = function() {
     socket.on("returnscore", function(results){
     	scoreList.push(results);
     	updateHighScore();
+    });
+
+    socket.on("overC", function(state){
+    	gameState = state;
     });
 }
