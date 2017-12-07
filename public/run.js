@@ -61,6 +61,7 @@ function update() {
 					players[i].shoot();
 				}
 			}
+			/*
 			var min = Math.ceil(0);
 			var max = Math.floor(650000);
 			var rand = Math.floor(Math.random() * (max - min)) + min;
@@ -75,6 +76,7 @@ function update() {
 				var p2 = new speedUp(rand2, -40);
 				powerups.push(p2);
 			}
+			*/
 			if (s == 3 && enemiesDefeated == numOfEnemies) {
 				enemiesDefeated = 0;
 				numOfEnemies = 0;
