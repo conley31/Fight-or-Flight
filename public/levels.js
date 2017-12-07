@@ -123,7 +123,7 @@ function levelTwo(s) {
 
 function levelThree(s) {
 	var p1 = new speedUp(500, -30);
-	var p2 = new rapidFire(220, -40);
+	var p2 = new rapidFire(220, -40, 1);
 	powerups.push(p1);
 	powerups.push(p2);
 	var e1 = new boss1(0, -70, s);
