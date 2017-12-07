@@ -84,7 +84,7 @@ window.onload = function() {
 	}
 
 	socket.on('newplayer', function(name, data){
-		if(name != null){}
+		if(name != null){
 			players = data;
 			numOfPlayers = players.length;
 			NewPlayer(name);
