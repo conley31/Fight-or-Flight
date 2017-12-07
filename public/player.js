@@ -7,8 +7,6 @@ function Player(username){
 	this.y = h;
 	this.hp = 1;
 	this.destroyed = false;
-	console.log(this.x);
-	console.log(this.y);
 	this.width = 40;
 	this.height = 40;
 	this.score = 0;
@@ -86,7 +84,6 @@ Player.prototype = {
 		projectiles.push(proj);
 	},
 	collision: function() {
-		console.log("checking hit");
 		for (i = 0; i < numOfEnemies; i++) {
 			if (enemies[i] != null) {
 				if ((this.x + (this.width / 2)) > enemies[i].x && (this.x + (this.width / 2)) < (enemies[i].x + enemies[i].width) && (this.y - this.height) < (enemies[i].y + enemies[i].height)) {

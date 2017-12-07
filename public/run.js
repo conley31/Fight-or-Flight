@@ -61,7 +61,6 @@ function update() {
 					players[i].shoot();
 				}
 			}
-			console.log(enemiesDefeated);
 			var min = Math.ceil(0);
 			var max = Math.floor(650000);
 			var rand = Math.floor(Math.random() * (max - min)) + min;
@@ -140,7 +139,6 @@ function draw() {
 		}
 	}
 	for (i = 0; i < numOfPowerups; i++) {
-		console.log(powerups[i]);
 		if (powerups[i] != null) {
 			powerups[i].draw();
 		}

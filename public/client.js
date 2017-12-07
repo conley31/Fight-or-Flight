@@ -72,13 +72,13 @@ window.onload = function() {
 		}
         var play = NewPlayer(name);
         if(play != player){
-        	if(key == 'left'){
+        	if(key.includes('left')){
         		play.positionDecreaseX()
         	}
-        	if(key == 'right'){
+        	if(key.includes('right')){
         		play.positionIncreaseX();
         	}
-        	if(key == 'space' && play.shotDelay()){
+        	if(key.includes('space') && play.shotDelay()){
         		play.shoot();
         	}
         }
