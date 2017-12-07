@@ -2,8 +2,8 @@ function levelOne(speed) {
 //	console.log("in levelOne");
 //	console.log(speed);
 	var e1 = new basicEnemy(0, 0, speed);
-	//var p1 = new rapidFire(50, 50, speed);
-	//powerups.push(p1);
+	var p1 = new rapidFire(67, -200, speed);
+	powerups.push(p1);
 	enemies.push(e1);
 	var e2 = new basicEnemy(65, 3, speed);
 	enemies.push(e2);
@@ -46,6 +46,8 @@ function levelOne(speed) {
 }
 
 function levelTwo(s) {
+	var p1 = new speedUp(420, -60);
+	powerups.push(p1);
 	var e1 = new basicEnemy(0, 0, s);
 	enemies.push(e1);
 	var e2 = new fastEnemy(65, 3, s);
@@ -120,6 +122,10 @@ function levelTwo(s) {
 }
 
 function levelThree(s) {
+	var p1 = new speedUp(500, -30);
+	var p2 = new rapidFire(220, -40);
+	powerups.push(p1);
+	powerups.push(p2);
 	var e1 = new boss1(0, -70, s);
 	enemies.push(e1);
 }
