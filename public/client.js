@@ -64,7 +64,6 @@ window.onload = function() {
 	var holdNames = {};
 
 	function NewPlayer(name){
-		console.log(name);
 		if (holdNames[name]){
             return holdNames[name];
         } else {
@@ -114,7 +113,7 @@ window.onload = function() {
     socket.on("state", function(mode){
     	if(player != null){
     		player.destroyed = true;
-    		gameState = mode;
     	}
+    	gameState = mode;
     });
 }
