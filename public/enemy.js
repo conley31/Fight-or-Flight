@@ -61,9 +61,9 @@ boss1.prototype = {
 			this.moveOpp = false;
 		}
 		if (!this.moveOpp) {
-			this.x = this.x + (5.2 * this.speedMult);
+			this.x = this.x + (3.8 * this.speedMult);
 		} else {
-			this.x = this.x - (5.2 * this.speedMult);
+			this.x = this.x - (3.8 * this.speedMult);
 		}
 		if (this.hp == 0) {
 			delete enemies[this.enemyID];
@@ -99,7 +99,7 @@ fastEnemy.prototype = {
 	width: 45,
 	height: 65,
 	draw: function() {
-		this.y = this.y + (1.5 * this.speedMult);
+		this.y = this.y + (1.15 * this.speedMult);
 		if (this.hp == 0) {
 			delete enemies[this.enemyID];
 			return;
@@ -135,7 +135,7 @@ wideEnemy.prototype = {
 	width: 70,
 	height: 30,
 	draw: function() {
-		this.y = this.y + (0.7 * this.speedMult);
+		this.y = this.y + (0.5 * this.speedMult);
 		if (this.hp == 0) {
 			delete enemies[this.enemyID];
 			return;
@@ -171,7 +171,7 @@ basicEnemy.prototype = {
 	draw: function() {
 	//	console.log("in basicEnemy draw");
 	//	console.log(this.y);
-		this.y = this.y + (1 * this.speedMult);
+		this.y = this.y + (0.7 * this.speedMult);
 	//	console.log(this.speedMult);
 	//	console.log(this.y);
 		if (this.hp == 0) {
