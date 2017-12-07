@@ -52,7 +52,7 @@ io.on('connection', function (socket) {
   socket.on('join', function(data) {
     socket.id = data;
     socket.broadcast.emit('newplayer', data);
-    socket.emit('state' mode);
+    socket.emit('state', mode);
   });
   socket.on('keys', function (data) {
     socket.broadcast.emit('keyMult', socket.id, data);
