@@ -109,7 +109,9 @@ window.onload = function() {
 	socket.on('keyMult', function(name, key){
 		if(gameState == "NOT_RUNNING"){
 			for(i = 0; i < numOfPlayers; i++){
-				players[i].running = 1;
+				if(key == 'up'){
+					players[i].running = 1;
+				}
 			}
 		}
 		console.log("keyMult");
