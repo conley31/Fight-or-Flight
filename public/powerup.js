@@ -28,7 +28,7 @@ speedUp.prototype = {
 		ctx.arc(this.x, this.y, this.r, 0, 2*Math.PI);
 		ctx.fill();
 		ctx.closePath();
-		ctx.font = '16px Arial';
+		ctx.font = '14px Arial';
 		ctx.fillStyle = '#000';
 		ctx.textAlign = 'center';
 		ctx.fillText("Speed Up", this.x, this.y);
