@@ -38,8 +38,10 @@ speedUp.prototype = {
 			if (!players[i].destroyed) {
 				if (this.x > players[i].x && this.x < (players[i].x + players[i].width) && this.y > (players[i].y - players[i].height)) {
 					console.log(players[i].delay);
-					if (players[i].speed < 13) {
-						players[i].speed++;
+					for (j = 0; j < numOfPlayers; j++) {
+						if (players[j].speed < 13) {
+							players[j].speed++;
+						}
 					}
 					delete powerups[this.powerupID];
 					return;
@@ -72,9 +74,11 @@ rapidFire.prototype = {
 			if (!players[i].destroyed) {
 				if (this.x > players[i].x && this.x < (players[i].x + players[i].width) && this.y > (players[i].y - players[i].height)) {
 					console.log(players[i].delay);
-					if (players[i].delay > 75) {
-						players[i].delay -= 25;
-						console.log(players[i].delay);
+					for (j = 0; j < numOfPlayers; j++) {
+						if (players[i].delay > 75) {
+							players[i].delay -= 25;
+							console.log(players[i].delay);
+						}
 					}
 					delete powerups[this.powerupID];
 					return;
