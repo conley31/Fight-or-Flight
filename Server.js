@@ -83,7 +83,7 @@ io.on('connection', function (socket) {
     }
     else if(state == "NEXT_LEVEL"){
       mode = "NEXT_LEVEL";
-      socket.braodcast.emit("waiting");
+      socket.broadcast.emit("waiting");
     }
     else if(state == "RUNNING"){
       mode = "RUNNING";

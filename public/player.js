@@ -88,8 +88,8 @@ Player.prototype = {
 		for (i = 0; i < numOfEnemies; i++) {
 			if (enemies[i] != null) {
 				if ((this.x + (this.width / 2)) > enemies[i].x && (this.x + (this.width / 2)) < (enemies[i].x + enemies[i].width) && (this.y - this.height) < (enemies[i].y + enemies[i].height)) {
-					this.hp--;
-					enemies[i].hp--;
+					//this.hp--;
+					//enemies[i].hp--;
 				}
 			}
 		}

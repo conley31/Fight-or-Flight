@@ -19,6 +19,7 @@ var s = 0;
 var speed = 1;
 var firstGame = true;
 var playerLoc;
+var firstlevel = 1;
 
 function simple() {
 	var e1 = new basicEnemy(0, -60);
@@ -96,6 +97,7 @@ function update() {
 				numOfProjectiles = 0;
 				s = 3;
 				levelThree(speed);
+				loading = 0;
 				gameState = "NEXT_LEVEL";
 			}
 			if (s == 1 && enemiesDefeated == numOfEnemies) {
@@ -107,10 +109,13 @@ function update() {
 				s = 2;
 		//		levelScreen();
 				levelTwo(speed);
+				loading = 0;
 				gameState = "NEXT_LEVEL";
 			}
 			if(s == 0){
+				firstlevel = 0;
 				levelOne(speed);
+				//loading = 0;
 				gameState = "NEXT_LEVEL";
 				s = 1;
 			}
@@ -166,24 +171,35 @@ function start() {
 		} else {
 			endScreen();
 		}
+		loading = 0;
 	}
 	else if(gameState == "NEXT_LEVEL") {
 		var check = new Date();
-		if(!loading && waitingCount == numOfPlayers - 1){
-			time = new Date();
-			levelScreen();
+
+		if(!loading){
+			console.log("not loading");
+			//time = new Date();
+			//levelScreen();
+			if(firstlevel){
+				time = new Date();
+				levelScreen();
+			}
+			else if(numOfPlayers >= waitingCount-1){
+				time = new Date();
+				levelScreen();
+			}
 		}
 		else if( check.getTime() >= (time.getTime() + 3000)){
 			player.state = "RUNNING";
 			gameState = "RUNNING";
-			loading = 0;
-			console.log(loading);
+			console.log(gameState);
 		}
 		else {
 			levelScreen();
 		}
 	}
 	else if(gameState == "GAME_OVER"){
+		loading = 0;
 		endScreen();
 		if(scoreState){
 			getHighScore();

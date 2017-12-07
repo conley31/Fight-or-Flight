@@ -28,6 +28,7 @@ window.onload = function() {
 	}
 
 	var tempKey;
+	var waited = 0;
 	function keyLoop(){
 		var keys = handleKeys();
 		if(keys){
@@ -40,18 +41,26 @@ window.onload = function() {
 		}
 
 		if(gameState == "GAME_OVER"){
+			waited = 0;
+			waitingCount = 0;
+
 			socket.emit("overS", "GAME_OVER");
 		}
 
-		if(gameState == "NEXT_LEVEL"){
+		if(gameState == "NEXT_LEVEL" && !firstlevel && !waited){
+			waited = 1;
 			socket.emit("overS", "NEXT_LEVEL");
 		}
 
 		if(gameState == "NOT_RUNNING"){
+			waitingCount = 0;
+			waited = 0;
 			socket.emit("overS", "NOT_RUNNING");
 		}
 
 		if(gameState == "RUNNING"){
+			waitingCount = 0;
+			waited = 0;
 			socket.emit("overS", "RUNNING");
 		}
 
@@ -101,6 +110,9 @@ window.onload = function() {
 		}
 		console.log("keyMult");
         var play = NewPlayer(name);
+        if(play == null){
+        	return;
+        }
         if(play != player){
         	if(key.includes('left')){
         		play.positionDecreaseX()
@@ -127,7 +139,7 @@ window.onload = function() {
     	if(player != null){
     		player.destroyed = true;
     	}
-    	gameState = mode;
+    	//gameState = mode;
     });
 
     socket.on('waiting', function(){
