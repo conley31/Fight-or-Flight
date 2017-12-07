@@ -80,10 +80,6 @@ window.onload = function() {
 
 	socket.on('newplayer', function(name, mode){
 		NewPlayer(name);
-		if(mode == "RUNNING"){
-			player.destroyed = true;
-		}
-		gameState = mode;
 	});
 
 	socket.on('keyMult', function(name, key){
@@ -113,5 +109,9 @@ window.onload = function() {
 
     socket.on("overC", function(state){
     	gameState = state;
+    });
+
+    socket.on("state", function(mode){
+    	gameState = mode;
     });
 }
